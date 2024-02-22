@@ -91,7 +91,7 @@
                         <div>
                             <p style="color:#737373; padding: 10px 30px; font-size: 18px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight:400">Belum punya akun?
                                 <a href="{{ route('register') }}">
-                                    <span style="color: #BA181B; font-size: 18px; font-weight: 700">{{ __('Register') }}</span>
+                                    <span style="color: #BA181B; font-size: 18px; font-weight: 700">{{ __('Daftar') }}</span>
                                 </a>
                             </p>
                         </div>

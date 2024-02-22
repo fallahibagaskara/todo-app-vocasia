@@ -122,7 +122,7 @@
 
                     <div class="flex items-center justify-center mt-8">
                         <x-button style="width: 100%; height: 50px; font-size: 18px; font-weight: 700; background-color: #BA181B" class="flex items-center justify-center">
-                            {{ __('Register') }}
+                            {{ __('DAFTAR') }}
                         </x-button>
                     </div>
                     <div class="flex items-center justify-center mt-2">
@@ -130,7 +130,7 @@
                         <div>
                             <p style="color:#737373; padding: 10px 30px; font-size: 18px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight:400">Belum punya akun?
                                 <a href="{{ route('login') }}">
-                                    <span style="color: #BA181B; font-size: 18px; font-weight: 700">{{ __('Login') }}</span>
+                                    <span style="color: #BA181B; font-size: 18px; font-weight: 700">{{ __('Masuk') }}</span>
                                 </a>
                             </p>
                         </div>
