@@ -90,7 +90,7 @@
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
-                        class="text-sm font-medium text-gray-100 py-2 px-2 hover:bg-gray-800 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out">
+                        class="text-sm font-medium text-gray-100 py-2 px-2 hover:text-gray-100 hover:scale-105 rounded-md transition duration-150 ease-in-out">
                         <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.4966 5.90625H5.90625V21.0938H13.5" stroke="#BA181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
