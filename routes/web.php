@@ -22,16 +22,6 @@ Route::middleware('guest')->group(function () {
     });
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/todo', function () {
-        return view('pages.todo');
-    })->name('todo');
-});
-
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
     Route::get('/done', [DoneController::class, 'index'])->name('done.index');
