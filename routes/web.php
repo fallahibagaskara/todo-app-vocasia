@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DoneController;
+use App\Http\Controllers\OverdueController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +30,10 @@ Route::middleware([
     Route::get('/todo', function () {
         return view('pages.todo');
     })->name('todo');
+});
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+    Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
+    Route::get('/done', [DoneController::class, 'index'])->name('done.index');
+    Route::get('/overdue', [OverdueController::class, 'index'])->name('overdue.index');
 });
