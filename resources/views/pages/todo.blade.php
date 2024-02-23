@@ -42,7 +42,7 @@
                     <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full mx-auto" />
                 </div>
                 <div id="menu" class="flex flex-col space-y-2">
-                    <a href=""
+                    <a href="{{route('todo.index')}}"
                         class="text-sm font-medium text-gray-700 py-2 px-2 hover:text-red-700 hover:text-base rounded-md transition duration-150 ease-in-out">
                         <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +65,7 @@
                         </svg>
                         <span class="ml-2">To Do</span>
                     </a>
-                    <a href=""
+                    <a href="{{route('done.index')}}"
                         class="text-sm font-medium text-gray-500 py-2 px-2 hover:text-red-700 hover:scale-105 rounded-md transition duration-150 ease-in-out">
                         <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@
                         </svg>
                         <span class="ml-2">Done</span>
                     </a>
-                    <a href=""
+                    <a href="{{route('overdue.index')}}"
                         class="text-sm font-medium text-gray-500 py-2 px-2 hover:text-red-700 hover:scale-105 rounded-md transition duration-150 ease-in-out">
                         <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
