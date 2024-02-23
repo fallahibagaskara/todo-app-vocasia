@@ -43,7 +43,7 @@
                 </div>
                 <div id="menu" class="flex flex-col space-y-2">
                     <a href=""
-                        class="text-sm font-medium text-gray-700 py-2 px-2 hover:bg-gray-800 hover:text-white hover:text-base rounded-md transition duration-150 ease-in-out">
+                        class="text-sm font-medium text-gray-700 py-2 px-2 hover:text-red-700 hover:text-base rounded-md transition duration-150 ease-in-out">
                         <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_825_7045)">
@@ -66,7 +66,7 @@
                         <span class="ml-2">To Do</span>
                     </a>
                     <a href=""
-                        class="text-sm font-medium text-gray-500 py-2 px-2 hover:bg-gray-800 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out">
+                        class="text-sm font-medium text-gray-500 py-2 px-2 hover:text-red-700 hover:scale-105 rounded-md transition duration-150 ease-in-out">
                         <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="11" fill="#DBA7A9" />
@@ -77,7 +77,7 @@
                         <span class="ml-2">Done</span>
                     </a>
                     <a href=""
-                        class="text-sm font-medium text-gray-500 py-2 px-2 hover:bg-gray-800 hover:text-white hover:scale-105 rounded-md transition duration-150 ease-in-out">
+                        class="text-sm font-medium text-gray-500 py-2 px-2 hover:text-red-700 hover:scale-105 rounded-md transition duration-150 ease-in-out">
                         <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
@@ -96,7 +96,7 @@
                             <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                        <span class="ml-2 text-red-700">Logout</span>
+                        <span class="ml-2 text-red-700 hover:text-red-800">Logout</span>
                     </a>
                     </form>
                 </div>
