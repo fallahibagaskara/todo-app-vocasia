@@ -35,8 +35,8 @@
             </svg>
         </button>
         <div id="sidebar"
-            class="h-screen px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-gray-50 md:block w-30 md:w-60 lg:w-60"
-            x-show="sidenav" @click.away="sidenav = false">
+            class="px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-gray-50 md:block w-30 md:w-60 lg:w-60" x-show="sidenav" @click.away="sidenav = false"
+            style="min-height: calc(100vh - 2rem);">
             <div class="mt-10 space-y-6 md:space-y-10">
                 <div id="logo" class="space-y-3">
                     <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full px-4 mx-auto" />
@@ -92,7 +92,7 @@
                         </svg>
                         <span class="ml-2">Overdue</span>
                     </a>
-                    <div class="absolute bottom-0">
+                    <div class="fixed bottom-0">
                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                     class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-red-500 hover:border-l-2 hover:text-red-700 hover:text-base" type="button">
                         {{-- CEK LAGI ICONNYA --}}
@@ -131,7 +131,7 @@
                                     <button data-modal-hide="popup-modal" type="button" class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-red-700 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                                         Batalkan
                                     </button>
-                                    <button data-modal-hide="popup-modal" class="text-white ml-8 bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" href="{{ route('logout') }}"
+                                    <button data-modal-hide="popup-modal" class="text-white ml-8 bg-red-800 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" href="{{ route('logout') }}"
                                                 @click.prevent="$root.submit();">
                                                 {{ __('Keluar') }}
                                     </button>
@@ -208,7 +208,7 @@
                                     To Do Today
                                 </h1>
                             </div>
-                            <div class="flex m-4">
+                            <div class="flex mt-2 mr-2">
                                 <button type="button" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                                     class="text-red-700 font-semibold bg-red-100 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
                                     + Tambah
@@ -319,7 +319,7 @@
                 <div id="clock_date" class="relative col-span-1 my-10 mr-8 overflow-x-auto border">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
-                            <h1 class="m-3 font-semibold">
+                            <h1 class="m-0.5 font-semibold">
                                 Jam dan Tanggal Hari ini
                             </h1>
                         </div>
@@ -363,26 +363,22 @@
                     <!-- Modal content -->
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <!-- Modal header -->
-                        <div
-                            class="flex items-center justify-between p-4 border-b rounded-t md:p-5 dark:border-gray-600">
-                            <div class="flex items-center justify-center">
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        <div class="flex items-center justify-center p-4 border-b rounded-t md:p-5 dark:border-gray-600" data-modal-toggle="crud-modal">
+                            <div class="flex items-center justify-center flex-grow">
+                                <h3 class="ml-8" style="font-size: 20px ; font-weight: 700 ; color: #BA181B ;">
                                     Task
                                 </h3>
                             </div>
                             <div>
                                 <button type="button"
-                                class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-toggle="crud-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                </svg>
-                                <span class="sr-only">Close modal</span>
-                            </button>
+                                    class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
                             </div>
-
                         </div>
                         <!-- Modal body -->
                         <form class="p-4 md:p-5">
@@ -408,6 +404,11 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
                                         Task</label>
                                     <div class="flex items-center">
+                                        {{-- <div class="relative">
+                                            <input name="clock_hour" id="clock_hour" type="time"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="00">
+                                        </div> --}}
                                         <div class="relative">
                                             <input name="clock_hour" id="clock_hour" type="number"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -441,10 +442,13 @@
                                             placeholder="Select date">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="flex justify-center col-span-2">
                                 <button type="submit"
-                                    class="text-white inline-flex items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                class="text-white w-1/2 items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                     Tambahkan
                                 </button>
+                            </div>
                         </form>
                     </div>
                 </div>
