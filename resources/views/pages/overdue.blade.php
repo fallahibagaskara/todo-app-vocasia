@@ -39,11 +39,11 @@
             x-show="sidenav" @click.away="sidenav = false">
             <div class="mt-10 space-y-6 md:space-y-10">
                 <div id="logo" class="space-y-3">
-                    <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full mx-auto" />
+                    <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full px-4 mx-auto" />
                 </div>
                 <div id="menu" class="flex flex-col space-y-2">
                     <a href="{{route('todo.index')}}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:text-base">
+                    class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-red-500 hover:border-l-2 active:border-red-500 active:border-l-2 hover:text-red-700 hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_825_7045)">
@@ -66,7 +66,7 @@
                         <span class="ml-2">To Do</span>
                     </a>
                     <a href="{{route('done.index')}}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:scale-105">
+                    class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-red-500 hover:border-l-2 active:border-red-500 active:border-l-2 hover:text-red-700 hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="11" fill="#DBA7A9" />
@@ -77,7 +77,12 @@
                         <span class="ml-2">Done</span>
                     </a>
                     <a href="{{route('overdue.index')}}"
-                        class="px-2 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:scale-105">
+                    class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-red-700 hover:text-base hover:scale-105
+                    @if(Route::is('overdue.index'))
+                        text-black border-l-2 border-red-500
+                    @else
+                        text-gray-500 hover:text-gray-700 hover:border-red-500
+                    @endif">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
@@ -87,22 +92,26 @@
                         </svg>
                         <span class="ml-2">Overdue</span>
                     </a>
-                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:scale-105" type="button">
-                        {{-- CEK LAGI ICONNYA --}}
-                        <div class="flex items-center">
-                            <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.4966 5.90625H5.90625V21.0938H13.5" stroke="#BA181B" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            <p class="ml-3 text-red-700 hover:text-red-800" > Logout </p>
-                        </div>
-                        <!-- Logout Modal -->
-                    </button>
+                    <div class="absolute bottom-0">
+                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                        class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-red-500 hover:border-l-2 hover:text-red-700 hover:text-base" type="button">
+                            {{-- CEK LAGI ICONNYA --}}
+                            <div class="flex items-center">
+                                <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.4966 5.90625H5.90625V21.0938H13.5" stroke="#BA181B" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <p class="ml-3 text-red-700 hover:text-red-800" > Logout </p>
+                            </div>
+                            <!-- Logout Modal -->
+                        </button>
+                    </div>
+
                     <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-md max-h-full p-4">
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -140,48 +149,52 @@
 
         <main class="w-full min-h-screen transition-all bg-white main">
             <div id="content" class="border-b">
-                <div class="grid items-center grid-cols-3">
-
-                    <div class="max-w-lg mx-auto my-10 bg-white">
-                        <div class="flex items-center justify-between">
-                            <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
-                                alt="Profile picture">
-                            <div class="ml-4">
-                                <h2 class="text-lg font-bold text-left">{{ Auth::user()->name }}</h2>
-                                <p class="text-left text-gray-500">Ayo lebih produktif 👋 </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-3 col-span-2">
-                        <div class="flex flex-col items-center justify-center h-20 w-36">
-                            <div class="h-20 bg-center bg-cover rounded-md w-36"
-                                style="background-image: url('{{ asset('images/todo-bg.png') }}')">
-                                <div class="flex items-center justify-center h-full p-6 w-36">
-                                    <span class="mr-2 text-6xl font-medium text-white">3</span>
-                                    <span class="text-sm font-medium text-white">To Do Task</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center h-20 w-36">
-                            <div class="h-20 bg-center bg-cover rounded-md w-36"
-                                style="background-image: url('{{ asset('images/done-bg.png') }}')">
-                                <div class="flex items-center justify-center h-full p-6 w-36">
-                                    <span class="mr-2 text-6xl font-medium text-white">2</span>
-                                    <span class="text-sm font-medium text-white">Done Task</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center h-20 w-36">
-                            <div class="h-20 bg-center bg-cover rounded-md w-36"
-                                style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
-                                <div class="flex items-center justify-center h-full p-6 w-36">
-                                    <span class="mr-2 text-6xl font-medium text-white">7</span>
-                                    <span class="text-sm font-medium text-white">Overdue Task</span>
+                <div class="grid items-center grid-cols-2">
+                    <div class="items-start ml-12 justify-self-start ">
+                        <div class="max-w-lg mx-auto my-10 bg-white ">
+                            <div class="flex items-center justify-between">
+                                <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
+                                    alt="Profile picture">
+                                <div class="ml-4">
+                                    <h2 class="text-lg font-bold text-left">{{ Auth::user()->name }}</h2>
+                                    <p class="text-left text-gray-500">Ayo lebih produktif 👋 </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div>
+                        <div class="grid justify-end grid-cols-3 col-span-1 gap-0">
+                            <div class="flex flex-col items-center justify-center h-20 p-0 m-0 w-36">
+                                <div class="h-20 bg-center bg-cover rounded-md w-36"
+                                    style="background-image: url('{{ asset('images/todo-bg.png') }}')">
+                                    <div class="flex items-center justify-center h-full p-6 w-36">
+                                        <span class="mr-2 text-6xl font-medium text-white">3</span>
+                                        <span class="text-sm font-medium text-white">To Do Task</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center justify-center h-20 p-0 m-0 w-36">
+                                <div class="h-20 bg-center bg-cover rounded-md w-36"
+                                    style="background-image: url('{{ asset('images/done-bg.png') }}')">
+                                    <div class="flex items-center justify-center h-full p-6 w-36">
+                                        <span class="mr-2 text-6xl font-medium text-white">2</span>
+                                        <span class="text-sm font-medium text-white">Done Task</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center justify-center h-20 p-0 m-0 w-36">
+                                <div class="h-20 bg-center bg-cover rounded-md w-36"
+                                    style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
+                                    <div class="flex items-center justify-center h-full p-6 w-36">
+                                        <span class="mr-2 text-6xl font-medium text-white">7</span>
+                                        <span class="text-sm font-medium text-white">Overdue Task</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
 
                 </div>
@@ -298,11 +311,15 @@
                     </table>
                 </div>
 
-                <div id="clock_date" class="col-span-1">
-                    <div>
-                        <p class="text2" style="color:#2B2E4A; text-align: center ; padding: 10px 40px; font-size: 20px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight:700">Jam dan Tanggal Hari ini</p>
+                <div id="clock_date" class="relative col-span-1 my-10 mr-8 overflow-x-auto border">
+                    <div class="flex items-center justify-between border-b">
+                        <div class="flex m-4">
+                            <h1 class="m-0.5 font-semibold">
+                                Jam dan Tanggal Hari ini
+                            </h1>
+                        </div>
                     </div>
-                    <div class="flex items-center justify-center">
+                    <div class="flex items-center justify-center m-4">
                         <iframe
                         src="https://free.timeanddate.com/clock/i9969c3o/n450/szw110/szh110/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee"
                         frameborder="0" width="110" height="110"></iframe>
@@ -325,7 +342,9 @@
                             updateClock();
                             </script>
                     </div>
-                    <div inline-datepicker data-date="@php echo date("m/d/Y") @endphp"></div>
+                    <div class="text-center">
+                        <div inline-datepicker data-date="@php echo date("m/d/Y") @endphp"></div>
+                    </div>
                 </div>
             </div>
             </div>
