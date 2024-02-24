@@ -35,8 +35,9 @@
             </svg>
         </button>
         <div id="sidebar"
-            class="h-screen px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-gray-50 md:block w-30 md:w-60 lg:w-60"
-            x-show="sidenav" @click.away="sidenav = false">
+            class="px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-gray-50 md:block w-30 md:w-60 lg:w-60"
+            x-show="sidenav" @click.away="sidenav = false"
+            style="min-height: calc(100vh - 2rem);">
             <div class="mt-10 space-y-6 md:space-y-10">
                 <div id="logo" class="space-y-3">
                     <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full px-4 mx-auto" />
@@ -92,7 +93,7 @@
                         </svg>
                         <span class="ml-2">Overdue</span>
                     </a>
-                    <div class="absolute bottom-0">
+                    <div class="fixed bottom-0">
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                         class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-red-500 hover:border-l-2 hover:text-red-700 hover:text-base" type="button">
                             {{-- CEK LAGI ICONNYA --}}
