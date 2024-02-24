@@ -23,10 +23,10 @@
 </head>
 <!-- component -->
 
-<body class="font-inter antialiased">
-    <div id="view" class="h-full w-screen flex flex-row" x-data="{ sidenav: true }">
+<body class="antialiased font-inter">
+    <div id="view" class="flex flex-row w-screen h-full" x-data="{ sidenav: true }">
         <button @click="sidenav = true"
-            class="p-2 border-2 bg-white rounded-md border-gray-200 shadow-lg text-gray-500 focus:bg-gray-800 focus:outline-none focus:text-white absolute top-0 left-0 sm:hidden">
+            class="absolute top-0 left-0 p-2 text-gray-500 bg-white border-2 border-gray-200 rounded-md shadow-lg focus:bg-gray-800 focus:outline-none focus:text-white sm:hidden">
             <svg class="w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -35,16 +35,16 @@
             </svg>
         </button>
         <div id="sidebar"
-            class="bg-gray-50 h-screen md:block border-r-2 border-gray-200 px-3 w-30 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out"
+            class="h-screen px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-gray-50 md:block w-30 md:w-60 lg:w-60"
             x-show="sidenav" @click.away="sidenav = false">
-            <div class="space-y-6 md:space-y-10 mt-10">
+            <div class="mt-10 space-y-6 md:space-y-10">
                 <div id="logo" class="space-y-3">
                     <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full mx-auto" />
                 </div>
                 <div id="menu" class="flex flex-col space-y-2">
                     <a href="{{route('todo.index')}}"
-                        class="text-sm font-medium text-gray-500 py-2 px-2 hover:text-red-700 hover:text-base rounded-md transition duration-150 ease-in-out">
-                        <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 18 20"
+                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:text-base">
+                        <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_825_7045)">
                                 <rect width="14.4643" height="8.86719" transform="matrix(-1 0 0 1 16.0714 9.25781)"
@@ -66,8 +66,8 @@
                         <span class="ml-2">To Do</span>
                     </a>
                     <a href="{{route('done.index')}}"
-                        class="text-sm font-medium text-gray-500 py-2 px-2 hover:text-red-700 hover:scale-105 rounded-md transition duration-150 ease-in-out">
-                        <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 22 22"
+                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:scale-105">
+                        <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="11" fill="#DBA7A9" />
                             <path
@@ -77,8 +77,8 @@
                         <span class="ml-2">Done</span>
                     </a>
                     <a href="{{route('overdue.index')}}"
-                        class="text-sm font-medium text-gray-700 py-2 px-2 hover:text-red-700 hover:scale-105 rounded-md transition duration-150 ease-in-out">
-                        <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 18 20"
+                        class="px-2 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:scale-105">
+                        <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
                             <path
@@ -87,61 +87,96 @@
                         </svg>
                         <span class="ml-2">Overdue</span>
                     </a>
-                    <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
-                        class="text-sm font-medium text-gray-100 py-2 px-2 hover:text-gray-100 hover:scale-105 rounded-md transition duration-150 ease-in-out">
-                        <svg class="w-5 h-5 fill-current inline-block" fill="currentColor" viewBox="0 0 27 27" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.4966 5.90625H5.90625V21.0938H13.5" stroke="#BA181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:scale-105" type="button">
+                        {{-- CEK LAGI ICONNYA --}}
+                        <div class="flex items-center">
+                            <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.4966 5.90625H5.90625V21.0938H13.5" stroke="#BA181B" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
-                        <span class="ml-2 text-red-700 hover:text-red-800">Logout</span>
-                    </a>
-                    </form>
+                            <p class="ml-3 text-red-700 hover:text-red-800" > Logout </p>
+                        </div>
+                        <!-- Logout Modal -->
+                    </button>
+                    <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                        <div class="relative w-full max-w-md max-h-full p-4">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                                <div class="p-4 text-center md:p-5">
+                                    <p style="font-size: 23px ; font-weight: 700 ; margin-bottom: 20px ;color:#BA181B">
+                                        Keluar
+                                    </p>
+                                    <h3 class="mb-5" style="font-size: 17px ; font-weight: 400; margin-bottom: 50px ; ">Apakah Anda yakin ingin keluar?</h3>
+                                        <!-- Authentication -->
+                                        <form method="POST" action="{{ route('logout') }}" x-data>
+                                            @csrf
+                                    <button data-modal-hide="popup-modal" type="button" class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-red-700 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        Batalkan
+                                    </button>
+                                    <button data-modal-hide="popup-modal" class="text-white ml-8 bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" href="{{ route('logout') }}"
+                                                @click.prevent="$root.submit();">
+                                                {{ __('Keluar') }}
+                                    </button>
+
+                                        </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <main class="w-full bg-white min-h-screen transition-all main">
+        <main class="w-full min-h-screen transition-all bg-white main">
             <div id="content" class="border-b">
-                <div class="grid grid-cols-3 items-center">
+                <div class="grid items-center grid-cols-3">
 
                     <div class="max-w-lg mx-auto my-10 bg-white">
                         <div class="flex items-center justify-between">
-                            <img class="w-16 h-16 rounded-full mx-auto" src="https://picsum.photos/200"
+                            <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
                                 alt="Profile picture">
                             <div class="ml-4">
-                                <h2 class="text-left text-lg font-bold">Vladimir Putin Edward</h2>
+                                <h2 class="text-lg font-bold text-left">{{ Auth::user()->name }}</h2>
                                 <p class="text-left text-gray-500">Ayo lebih produktif 👋 </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-3 col-span-2">
-                        <div class="flex h-20 w-36 justify-center items-center flex-col">
-                            <div class="h-20 w-36 bg-cover bg-center rounded-md"
+                        <div class="flex flex-col items-center justify-center h-20 w-36">
+                            <div class="h-20 bg-center bg-cover rounded-md w-36"
                                 style="background-image: url('{{ asset('images/todo-bg.png') }}')">
-                                <div class="w-36 h-full flex  justify-center items-center p-6">
-                                    <span class="text-6xl text-white font-medium mr-2">3</span>
+                                <div class="flex items-center justify-center h-full p-6 w-36">
+                                    <span class="mr-2 text-6xl font-medium text-white">3</span>
                                     <span class="text-sm font-medium text-white">To Do Task</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex h-20 w-36 justify-center items-center flex-col">
-                            <div class="h-20 w-36 bg-cover bg-center rounded-md"
+                        <div class="flex flex-col items-center justify-center h-20 w-36">
+                            <div class="h-20 bg-center bg-cover rounded-md w-36"
                                 style="background-image: url('{{ asset('images/done-bg.png') }}')">
-                                <div class="w-36 h-full flex  justify-center items-center p-6">
-                                    <span class="text-6xl text-white font-medium mr-2">2</span>
+                                <div class="flex items-center justify-center h-full p-6 w-36">
+                                    <span class="mr-2 text-6xl font-medium text-white">2</span>
                                     <span class="text-sm font-medium text-white">Done Task</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="flex h-20 w-36 justify-center items-center flex-col">
-                            <div class="h-20 w-36 bg-cover bg-center rounded-md"
+                        <div class="flex flex-col items-center justify-center h-20 w-36">
+                            <div class="h-20 bg-center bg-cover rounded-md w-36"
                                 style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
-                                <div class="w-36 h-full flex  justify-center items-center p-6">
-                                    <span class="text-6xl text-white font-medium mr-2">7</span>
+                                <div class="flex items-center justify-center h-full p-6 w-36">
+                                    <span class="mr-2 text-6xl font-medium text-white">7</span>
                                     <span class="text-sm font-medium text-white">Overdue Task</span>
                                 </div>
                             </div>
@@ -153,9 +188,9 @@
             </div>
 
             <div class="grid grid-cols-3">
-                <div id="todo" class="m-10 relative overflow-x-auto border col-span-2">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                        <div class="flex justify-between border-b items-center">
+                <div id="todo" class="relative col-span-2 m-10 overflow-x-auto border">
+                    <table class="w-full text-sm text-left text-gray-500 rtl:text-right">
+                        <div class="flex items-center justify-between border-b">
                             <div class="flex m-4">
                                 <h1 class="font-semibold">
                                     Overdue
@@ -167,7 +202,7 @@
                                 <td class="w-4 p-4">
                                     <div class="flex items-center">
                                         <input id="checkbox-table-search-3" type="checkbox"
-                                            class="w-4 h-4 text-gray-600 bg-white border-gray-400 border-2 rounded focus:ring-red-500-800-800 focus:ring-2">
+                                            class="w-4 h-4 text-gray-600 bg-white border-2 border-gray-400 rounded focus:ring-red-500-800-800 focus:ring-2">
                                         <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
                                     </div>
                                 </td>
@@ -175,16 +210,16 @@
                                     <h5 class="mb-1 text-sm font-bold tracking-tight text-gray-900">Mengerjakan mini
                                         project
                                         vocasia</h5>
-                                    <p class="mb-2 font-normal text-xs text-gray-700">Lorem ipsum dolor sit amet,
+                                    <p class="mb-2 text-xs font-normal text-gray-700">Lorem ipsum dolor sit amet,
                                         consectetur
                                         adipiscing elit quis consequat wuediu liania...</p>
                                     <div class="flex justify-start">
-                                        <p class="font-bold text-xs text-red-500 mr-2">09:30 AM</p>
+                                        <p class="mr-2 text-xs font-bold text-red-500">09:30 AM</p>
                                         <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <circle cx="2" cy="2" r="2" fill="#737373" />
                                         </svg>
-                                        <p class="font-normal text-xs text-gray-700 ml-2">Selasa, 5 Maret 2022</p>
+                                        <p class="ml-2 text-xs font-normal text-gray-700">Selasa, 5 Maret 2022</p>
                                     </div>
                                 </th>
                                 <td class="flex items-center px-6 py-9">
@@ -215,7 +250,7 @@
                                 <td class="w-4 p-4">
                                     <div class="flex items-center">
                                         <input id="checkbox-table-search-3" type="checkbox"
-                                            class="w-4 h-4 text-gray-600 bg-white border-gray-400 border-2 rounded focus:ring-red-500-800-800 focus:ring-2">
+                                            class="w-4 h-4 text-gray-600 bg-white border-2 border-gray-400 rounded focus:ring-red-500-800-800 focus:ring-2">
                                         <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
                                     </div>
                                 </td>
@@ -223,16 +258,16 @@
                                     <h5 class="mb-1 text-sm font-bold tracking-tight text-gray-900">Mengerjakan mini
                                         project
                                         vocasia</h5>
-                                    <p class="mb-2 font-normal text-xs text-gray-700">Lorem ipsum dolor sit amet,
+                                    <p class="mb-2 text-xs font-normal text-gray-700">Lorem ipsum dolor sit amet,
                                         consectetur
                                         adipiscing elit quis consequat wuediu liania...</p>
                                     <div class="flex justify-start">
-                                        <p class="font-bold text-xs text-red-500 mr-2">09:30 AM</p>
+                                        <p class="mr-2 text-xs font-bold text-red-500">09:30 AM</p>
                                         <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <circle cx="2" cy="2" r="2" fill="#737373" />
                                         </svg>
-                                        <p class="font-normal text-xs text-gray-700 ml-2">Selasa, 5 Maret 2022</p>
+                                        <p class="ml-2 text-xs font-normal text-gray-700">Selasa, 5 Maret 2022</p>
                                     </div>
                                 </th>
                                 <td class="flex items-center px-6 py-9">
@@ -264,31 +299,51 @@
                 </div>
 
                 <div id="clock_date" class="col-span-1">
-                    <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text2" style="color:#2B2E4A; text-align: center ; padding: 10px 40px; font-size: 20px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight:700">Jam dan Tanggal Hari ini</p>
+                    </div>
+                    <div class="flex items-center justify-center">
                         <iframe
                         src="https://free.timeanddate.com/clock/i9969c3o/n450/szw110/szh110/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee"
                         frameborder="0" width="110" height="110"></iframe>
-                    <iframe src="https://free.timeanddate.com/clock/i9969d9p/n450/tlid38/th2/ts1" frameborder="0"
-                        width="60" height="18"></iframe>
+                        <div id="custom-clock" style="color: #2B2E4A; font-size: 25px; margin-left:10px"></div>
+
+                            <script>
+                            function updateClock() {
+                                var now = new Date();
+                                var hours = now.getHours();
+                                var minutes = now.getMinutes();
+                                var amPm = hours >= 12 ? 'PM' : 'AM';
+
+                                hours = hours % 12;
+                                hours = hours ? hours : 12;
+                                minutes = minutes < 10 ? '0' + minutes : minutes;
+                                var formattedTime = hours + ':' + minutes + ' ' + amPm;
+                                document.getElementById('custom-clock').textContent = formattedTime;
+                            }
+                            setInterval(updateClock, 1000);
+                            updateClock();
+                            </script>
                     </div>
                     <div inline-datepicker data-date="@php echo date("m/d/Y") @endphp"></div>
                 </div>
+            </div>
             </div>
 
             <!-- Main modal -->
             <div id="crud-modal" tabindex="-1" aria-hidden="true"
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative w-full max-w-md max-h-full p-4">
                     <!-- Modal content -->
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <!-- Modal header -->
                         <div
-                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            class="flex items-center justify-between p-4 border-b rounded-t md:p-5 dark:border-gray-600">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                                 Task
                             </h3>
                             <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
                                 data-modal-toggle="crud-modal">
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 14 14">
@@ -300,7 +355,7 @@
                         </div>
                         <!-- Modal body -->
                         <form class="p-4 md:p-5">
-                            <div class="grid gap-4 mb-4 grid-cols-2">
+                            <div class="grid grid-cols-2 gap-4 mb-4">
                                 <div class="col-span-2">
                                     <label for="title"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
@@ -341,7 +396,7 @@
                                         Task</label>
                                     <div class="relative max-w-sm">
                                         <div
-                                            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="0 0 20 20">

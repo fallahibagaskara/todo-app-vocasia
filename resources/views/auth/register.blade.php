@@ -1,7 +1,8 @@
 <x-guest-layout>
-    <div class="flex">
+    <div style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;" class="flex bg-gray-100 rs">
         <!-- Left side -->
-        <div class="flex flex-col items-center w-full sm:w-1/2 sm:justify-center">
+        <div style="background-color: white !important; border-top-right-radius: 80px; /* border radius atas sisi kanan */
+        border-bottom-right-radius: 80px;" class="flex flex-col items-center w-full sm:w-1/2 sm:justify-center rs2">
 
             <!-- Logo -->
             <div class="logo" style="width: 150px; height: 100px; margin-top: 10px; position: relative; display: flex; justify-content: center; align-items: center;">
@@ -164,6 +165,10 @@
         }
         .text2{
             font-size: 12px !important;
+        }
+        .rs, .rs2{
+            border-top-right-radius: 0px !important;
+            border-bottom-right-radius: 0px !important;
         }
     }
 </style>

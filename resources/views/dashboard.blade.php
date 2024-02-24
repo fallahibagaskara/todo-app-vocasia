@@ -39,11 +39,11 @@
             x-show="sidenav" @click.away="sidenav = false">
             <div class="mt-10 space-y-6 md:space-y-10">
                 <div id="logo" class="space-y-3">
-                    <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full mx-auto" />
+                    <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full px-4 mx-auto" />
                 </div>
                 <div id="menu" class="flex flex-col space-y-2">
-                    <a href="{{route('todo.index')}}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:text-base">
+                    <a href=""
+                        class="px-2 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:bg-gray-800 hover:text-white hover:text-base">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_825_7045)">
@@ -65,8 +65,8 @@
                         </svg>
                         <span class="ml-2">To Do</span>
                     </a>
-                    <a href="{{route('done.index')}}"
-                        class="px-2 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:scale-105">
+                    <a href=""
+                        class="px-2 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:bg-gray-800 hover:text-white hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="11" fill="#DBA7A9" />
@@ -76,8 +76,8 @@
                         </svg>
                         <span class="ml-2">Done</span>
                     </a>
-                    <a href="{{route('overdue.index')}}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out rounded-md hover:text-red-700 hover:scale-105">
+                    <a href=""
+                        class="px-2 py-2 text-sm font-medium text-gray-700 transition duration-150 ease-in-out rounded-md hover:bg-gray-800 hover:text-white hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
@@ -87,53 +87,58 @@
                         </svg>
                         <span class="ml-2">Overdue</span>
                     </a>
-                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:scale-105" type="button">
-                        {{-- CEK LAGI ICONNYA --}}
-                        <div class="flex items-center">
-                            <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13.4966 5.90625H5.90625V21.0938H13.5" stroke="#BA181B" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            <p class="ml-3 text-red-700 hover:text-red-800" > Logout </p>
-                        </div>
-                        <!-- Logout Modal -->
-                    </button>
-                    <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                        <div class="relative w-full max-w-md max-h-full p-4">
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                    </svg>
-                                    <span class="sr-only">Close modal</span>
+
+
+
+                <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:scale-105" type="button">
+                    {{-- CEK LAGI ICONNYA --}}
+                    <div class="flex items-center">
+                        <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.4966 5.90625H5.90625V21.0938H13.5" stroke="#BA181B" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M17.2969 17.2969L21.0938 13.5L17.2969 9.70312" stroke="#BA181B" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <p style="margin-left: 13px" > Logout </p>
+                    </div>
+                    <!-- Logout Modal -->
+                </button>
+                <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-md max-h-full p-4">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 text-center md:p-5">
+                                <p style="font-size: 23px ; font-weight: 700 ; margin-bottom: 20px ;color:#BA181B">
+                                    Keluar
+                                </p>
+                                <h3 class="mb-5" style="font-size: 17px ; font-weight: 400; margin-bottom: 50px ; ">Apakah Anda yakin ingin keluar?</h3>
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}" x-data>
+                                        @csrf
+                                <button data-modal-hide="popup-modal" type="button" class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-red-700 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                    Batalkan
                                 </button>
-                                <div class="p-4 text-center md:p-5">
-                                    <p style="font-size: 23px ; font-weight: 700 ; margin-bottom: 20px ;color:#BA181B">
-                                        Keluar
-                                    </p>
-                                    <h3 class="mb-5" style="font-size: 17px ; font-weight: 400; margin-bottom: 50px ; ">Apakah Anda yakin ingin keluar?</h3>
-                                        <!-- Authentication -->
-                                        <form method="POST" action="{{ route('logout') }}" x-data>
-                                            @csrf
-                                    <button data-modal-hide="popup-modal" type="button" class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-red-700 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                        Batalkan
-                                    </button>
-                                    <button data-modal-hide="popup-modal" class="text-white ml-8 bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" href="{{ route('logout') }}"
-                                                @click.prevent="$root.submit();">
-                                                {{ __('Keluar') }}
-                                    </button>
+                                <button data-modal-hide="popup-modal" class="text-white ml-8 bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" href="{{ route('logout') }}"
+                                            @click.prevent="$root.submit();">
+                                            {{ __('Keluar') }}
+                                </button>
 
-                                        </form>
+                                    </form>
 
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+
                 </div>
             </div>
         </div>
@@ -153,6 +158,7 @@
                         </div>
                     </div>
 
+                    <!-- Col 1 Sidebar -->
                     <div class="grid grid-cols-3 col-span-2">
                         <div class="flex flex-col items-center justify-center h-20 w-36">
                             <div class="h-20 bg-center bg-cover rounded-md w-36"
@@ -186,15 +192,21 @@
 
                 </div>
             </div>
-
-            <div class="grid grid-cols-3">
+                    <!-- Col 2 Todo -->
+                <div class="grid grid-cols-3">
                 <div id="todo" class="relative col-span-2 m-10 overflow-x-auto border">
                     <table class="w-full text-sm text-left text-gray-500 rtl:text-right">
                         <div class="flex items-center justify-between border-b">
                             <div class="flex m-4">
                                 <h1 class="font-semibold">
-                                    Done
+                                    To Do Today
                                 </h1>
+                            </div>
+                            <div class="flex m-4">
+                                <button type="button" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                                    class="text-red-700 font-semibold bg-red-100 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                                    + Tambah
+                                </button>
                             </div>
                         </div>
                         <tbody>
@@ -298,6 +310,7 @@
                     </table>
                 </div>
 
+                <!-- Col 3 Clock Animation -->
                 <div id="clock_date" class="col-span-1">
                     <div>
                         <p class="text2" style="color:#2B2E4A; text-align: center ; padding: 10px 40px; font-size: 20px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight:700">Jam dan Tanggal Hari ini</p>
@@ -324,11 +337,16 @@
                             setInterval(updateClock, 1000);
                             updateClock();
                             </script>
+
+                        {{-- <div>
+                            <iframe src="https://free.timeanddate.com/clock/i9969d9p/n450/tlid38/th2/ts1" frameborder="0"
+                            width="60" height="18"></iframe>
+                        </div> --}}
                     </div>
                     <div inline-datepicker data-date="@php echo date("m/d/Y") @endphp"></div>
                 </div>
             </div>
-            </div>
+
 
             <!-- Main modal -->
             <div id="crud-modal" tabindex="-1" aria-hidden="true"
