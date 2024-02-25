@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         });
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        checkbox.checked = false;
                     }
                 });
                 } else {
@@ -102,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 });
                             });
                         } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            checkbox.checked = true;
                         }
                     });
                 }
