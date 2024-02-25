@@ -43,7 +43,7 @@
                 </div>
                 <div id="menu" class="flex flex-col space-y-2">
                     <a href="{{ route('todo.index') }}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-lightprimary hover:border-l-2 active:border-lightprimary active:border-l-2 hover:text-primary hover:scale-105">
+                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-primary hover:border-l-2 active:border-lightprimary active:border-l-2 hover:text-primary hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_825_7045)">
@@ -67,7 +67,7 @@
                     </a>
                     <a href="{{ route('done.index') }}"
                         class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-primary hover:text-base
-                    {{ Route::is('done.index') ? 'text-black border-l-2 border-lightprimary' : 'text-gray-500 hover:text-darkgray hover:border-lightprimary' }}">
+                    {{ Route::is('done.index') ? 'text-black border-l-2 border-primary' : 'text-gray-500 hover:text-darkgray hover:border-primary' }}">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="11" fill="#DBA7A9" />
@@ -78,7 +78,7 @@
                         <span class="ml-2">Done</span>
                     </a>
                     <a href="{{ route('overdue.index') }}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-lightprimary hover:border-l-2 active:border-lightprimary active:border-l-2 hover:text-primary hover:scale-105">
+                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-primary hover:border-l-2 active:border-primary active:border-l-2 hover:text-primary hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
@@ -90,7 +90,7 @@
                     </a>
                     <div class="fixed bottom-4">
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                            class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-lightprimary hover:border-l-2 hover:text-primary hover:text-base"
+                            class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-primary hover:border-l-2 hover:text-primary hover:text-base"
                             type="button">
                             <div class="flex items-center">
                                 <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
@@ -196,9 +196,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
 

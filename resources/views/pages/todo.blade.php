@@ -96,7 +96,7 @@
                     </a>
                     <div class="fixed bottom-4">
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                            class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-lightprimary hover:border-l-2 hover:text-primary hover:text-base"
+                            class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-primary hover:border-l-2 hover:text-primary hover:text-base"
                             type="button">
                             <div class="flex items-center">
                                 <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
