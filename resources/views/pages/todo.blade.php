@@ -26,14 +26,6 @@
 
     <!-- Styles -->
     @livewireStyles
-
-    <style>
-        /* CSS khusus untuk tombol batal */
-        .swal2-cancell {
-            color: #ff0000; /* Warna teks */
-            background-color: transparent !important; /* Latar belakang transparan */
-        }
-    </style>
 </head>
 <!-- component -->
 
@@ -49,7 +41,7 @@
             </svg>
         </button>
         <div id="sidebar"
-            class="px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-gray-50 md:block w-30 md:w-60 lg:w-60"
+            class="px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-lightgray md:block w-30 md:w-60 lg:w-60"
             x-show="sidenav" @click.away="sidenav = false" style="min-height: calc(100vh - 2rem);">
             <div class="mt-10 space-y-6 md:space-y-10">
                 <div id="logo" class="space-y-3">
@@ -57,8 +49,8 @@
                 </div>
                 <div id="menu" class="flex flex-col space-y-2">
                     <a href="{{ route('todo.index') }}"
-                        class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-red-700 hover:text-base
-                    {{ Route::is('todo.index') ? 'text-black border-l-2 border-red-500' : 'text-gray-500 hover:text-gray-700 hover:border-red-500' }}">
+                        class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-primary hover:text-base
+                    {{ Route::is('todo.index') ? 'text-black border-l-2 border-primary' : 'text-gray-500 hover:text-darkgray hover:border-primary' }}">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_825_7045)">
@@ -81,7 +73,7 @@
                         <span class="ml-2">To Do</span>
                     </a>
                     <a href="{{ route('done.index') }}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-red-500 hover:border-l-2 active:border-red-500 active:border-l-2 hover:text-red-700 hover:scale-105">
+                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-primary hover:border-l-2 active:border-primary active:border-l-2 hover:text-primary hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="11" fill="#DBA7A9" />
@@ -92,7 +84,7 @@
                         <span class="ml-2">Done</span>
                     </a>
                     <a href="{{ route('overdue.index') }}"
-                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-red-500 hover:border-l-2 active:border-red-500 active:border-l-2 hover:text-red-700 hover:scale-105">
+                        class="px-2 py-2 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:border-primary hover:border-l-2 active:border-primary active:border-l-2 hover:text-primary hover:scale-105">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
@@ -104,7 +96,7 @@
                     </a>
                     <div class="fixed bottom-4">
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                            class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-red-500 hover:border-l-2 hover:text-red-700 hover:text-base"
+                            class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-lightprimary hover:border-l-2 hover:text-primary hover:text-base"
                             type="button">
                             <div class="flex items-center">
                                 <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
@@ -116,7 +108,7 @@
                                     <path d="M10.125 13.4966H21.0937" stroke="#BA181B" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p class="ml-3 text-red-700 hover:text-red-800"> Logout </p>
+                                <p class="ml-3 text-primary hover:text-red-800"> Logout </p>
                             </div>
                             <!-- Logout Modal -->
                         </button>
@@ -124,7 +116,7 @@
                     <div id="popup-modal" tabindex="-1"
                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-md max-h-full p-4">
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-darkgray">
                                 <button type="button"
                                     class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                     data-modal-hide="popup-modal">
@@ -146,7 +138,7 @@
                                     <form method="POST" action="{{ route('logout') }}" x-data>
                                         @csrf
                                         <button data-modal-hide="popup-modal" type="button"
-                                            class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-red-700 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-primary focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-darkgray dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-darkgray">
                                             Batalkan
                                         </button>
                                         <button data-modal-hide="popup-modal"
@@ -172,8 +164,8 @@
                                 <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
                                     alt="Profile picture">
                                 <div class="ml-4">
-                                    <h2 class="text-lg font-bold text-left">{{ Auth::user()->name }}</h2>
-                                    <p class="text-left text-gray-500">Ayo lebih produktif 👋 </p>
+                                    <h2 class="text-lg font-bold text-left text-darkblue">{{ Auth::user()->name }}</h2>
+                                    <p class="text-left text-subheading">Ayo lebih produktif 👋 </p>
                                 </div>
                             </div>
                         </div>
@@ -218,14 +210,14 @@
                     <table class="w-full text-sm text-left text-gray-500 rtl:text-right">
                         <div class="flex items-center justify-between border-b">
                             <div class="flex m-4">
-                                <h1 class="font-semibold">
+                                <h1 class="font-semibold text-darkblue">
                                     To Do Today
                                 </h1>
                             </div>
                             <div class="flex mt-2 mr-2">
                                 <button type="button" id="create_todo_btn" data-modal-target="addTodoModal"
                                     data-modal-toggle="addTodoModal"
-                                    class="text-red-700 font-semibold bg-red-100 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                                    class="text-primary font-semibold bg-red-100 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-xl text-sm px-5 py-3 text-center inline-flex items-center me-2 mb-2">
                                     + Tambah
                                 </button>
                             </div>
@@ -236,7 +228,7 @@
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-table-search-{{ $todo->id }}" type="checkbox"
-                                                class="w-4 h-4 text-red-700 bg-white border-2 border-gray-400 rounded focus:ring-red-500-800-800 focus:ring-2 checkbox-todo"
+                                                class="w-4 h-4 text-primary bg-white border-2 border-gray-400 rounded focus:ring-primary focus:ring-2 checkbox-todo"
                                                 {{ $todo->status === 'done' ? 'checked' : '' }}>
                                             <label for="checkbox-table-search-{{ $todo->id }}"
                                                 class="sr-only">checkbox</label>
@@ -247,15 +239,15 @@
                                             class="mb-1 text-sm font-bold tracking-tight text-gray-900 @if ($todo->status === 'done') line-through @endif">
                                             {{ $todo->title }}</h5>
                                         <p
-                                            class="mb-2 text-xs font-normal text-gray-700 @if ($todo->status === 'done') line-through @endif">
+                                            class="mb-2 text-xs font-normal text-darkgray @if ($todo->status === 'done') line-through @endif">
                                             {{ $todo->comment }}</p>
                                         <div class="flex justify-start">
-                                            <p class="mr-2 text-xs font-bold text-red-500">{{ $todo->clock }} AM</p>
+                                            <p class="mr-2 text-xs font-bold text-lightprimary">{{ $todo->clock }} AM</p>
                                             <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="2" cy="2" r="2" fill="#737373" />
                                             </svg>
-                                            <p class="ml-2 text-xs font-normal text-gray-700">{{ $todo->date }}</p>
+                                            <p class="ml-2 text-xs font-normal text-subheading">{{ $todo->date }}</p>
                                         </div>
                                     </th>
                                     <td class="flex items-center px-6 py-9">
@@ -329,7 +321,7 @@
             {{-- <div id="confirmation-modal" tabindex="-1"
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative w-full max-w-md max-h-full p-4">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-darkgray">
                         <button type="button"
                             class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                             data-modal-hide="confirmation-modal">
@@ -348,7 +340,7 @@
                                 Setelah dikonfirmasi, task ini akan ditandai sebagai selesai!</h3>
                             <!-- Authentication -->
                             <button data-modal-hide="confirmation-modal" type="button"
-                                class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-red-700 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                class=" mr-8 py-2.5 px-5 ms-3 text-sm font-medium text-primary focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-darkgray dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-darkgray">
                                 Batalkan
                             </button>
                             <button id="btn-confirm-done" data-modal-hide="confirmation-modal"
@@ -366,7 +358,7 @@
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-1/2 left-1/2 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative w-full max-w-md max-h-full p-4">
                     <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-darkgray">
                         <!-- Modal header -->
                         <div class="flex items-center justify-center p-4 border-b rounded-t md:p-5 dark:border-gray-600"
                             data-modal-toggle="addTodoModal">
@@ -396,7 +388,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
                                         Task</label>
                                     <input type="text" name="title" id="title"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Judul Task" required="">
                                 </div>
                                 <div class="col-span-2">
@@ -404,7 +396,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
                                         Task</label>
                                     <textarea name="comment" id="comment" rows="4"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Komentar Task" required=""></textarea>
                                 </div>
                                 <div class="col-span-2">
@@ -414,18 +406,18 @@
                                     <div class="flex items-center">
                                         {{-- <div class="relative">
                                         <input name="clock_hour" id="clock_hour" type="time"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                             placeholder="00">
                                     </div> --}}
                                         <div class="relative">
                                             <input name="clock_hour" id="clock_hour" type="number"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                                class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                                 placeholder="00" required="">
                                         </div>
                                         <span class="mx-4 text-gray-500">:</span>
                                         <div class="relative">
                                             <input name="clock_minute" id="clock_minute" type="number"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                                class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                                 placeholder="00" required="">
                                         </div>
                                     </div>
@@ -446,14 +438,14 @@
                                         </div>
                                         <input datepicker datepicker-autohide type="text" name="date"
                                             id="date"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                             placeholder="Select date" required="">
                                     </div>
                                 </div>
                             </div>
                             <div class="flex justify-center col-span-2">
                                 <button type="submit" id="add_todo_btn"
-                                    class="text-white w-1/2 items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                    class="text-white w-1/2 items-center bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
                                     Tambahkan
                                 </button>
                             </div>
@@ -467,7 +459,7 @@
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative w-full max-w-md max-h-full p-4">
                     <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-darkgray">
                         <!-- Modal header -->
                         <div class="flex items-center justify-center p-4 border-b rounded-t md:p-5 dark:border-gray-600"
                             data-modal-toggle="editTodoModal">
@@ -497,7 +489,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
                                         Task</label>
                                     <input type="text" name="title" id="title"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Judul Task" required="">
                                 </div>
                                 <div class="col-span-2">
@@ -505,7 +497,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
                                         Task</label>
                                     <textarea name="comment" id="comment" rows="4"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Komentar Task" required=""></textarea>
                                 </div>
                                 <div class="col-span-2">
@@ -515,18 +507,18 @@
                                     <div class="flex items-center">
                                         {{-- <div class="relative">
                                         <input name="clock_hour" id="clock_hour" type="time"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                             placeholder="00">
                                     </div> --}}
                                         <div class="relative">
                                             <input name="clock_hour" id="clock_hour" type="number"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                                class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                                 placeholder="00">
                                         </div>
                                         <span class="mx-4 text-gray-500">:</span>
                                         <div class="relative">
                                             <input name="clock_minute" id="clock_minute" type="number"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="00">
                                         </div>
                                     </div>
@@ -547,14 +539,14 @@
                                         </div>
                                         <input datepicker datepicker-autohide type="text" name="date"
                                             id="date"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                             placeholder="Select date">
                                     </div>
                                 </div>
                             </div>
                             <div class="flex justify-center col-span-2">
                                 <button type="submit" id="add_todo_btn"
-                                    class="text-white w-1/2 items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                    class="text-white w-1/2 items-center bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
                                     Tambahkan
                                 </button>
                             </div>

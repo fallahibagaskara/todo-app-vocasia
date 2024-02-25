@@ -13,9 +13,18 @@ export default {
     ],
 
     theme: {
+        colors:{
+            primary: '#BA181B',
+            lightprimary: '#E84545',
+            lightgray: '#F8F8FB',
+            subheading: '#737373',
+            darkgray: '#454141',
+            darkblue: '#2B2E4A',
+        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                inter: ['Inter', ...defaultTheme.fontFamily.sans],
             },
         },
     },
