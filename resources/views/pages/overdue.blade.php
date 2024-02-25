@@ -76,7 +76,7 @@
                         <span class="ml-2">Done</span>
                     </a>
                     <a href="{{ route('overdue.index') }}"
-                        class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-primary hover:text-base {{ Route::is('overdue.index') ? 'text-black border-l-2 border-lightprimary' : 'text-gray-500 hover:text-darkgray hover:border-primary' }}">
+                        class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-primary hover:text-base {{ Route::is('overdue.index') ? 'text-black border-l-2 border-primary' : 'text-gray-500 hover:text-darkgray hover:border-primary' }}">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
