@@ -23,7 +23,7 @@
 </head>
 <!-- component -->
 
-<body class="font-inter antialiased">
+<body class="antialiased font-inter">
     <div id="view" class="flex flex-row w-screen h-full" x-data="{ sidenav: true }">
         <button @click="sidenav = true"
             class="absolute top-0 left-0 p-2 text-gray-500 bg-white border-2 border-gray-200 rounded-md shadow-lg focus:bg-gray-800 focus:outline-none focus:text-white sm:hidden">
@@ -36,7 +36,7 @@
         </button>
         <div id="sidebar"
             class="px-3 overflow-x-hidden transition-transform duration-300 ease-in-out border-r-2 border-gray-200 bg-lightgray md:block w-30 md:w-60 lg:w-60"
-            x-show="sidenav" @click.away="sidenav = false" style="min-height: calc(100vh - 2rem);">
+            x-show="sidenav" @click.away="sidenav = false">
             <div class="mt-10 space-y-6 md:space-y-10">
                 <div id="logo" class="space-y-3">
                     <img src="{{ asset('images/vocasia.png') }}" alt="Vocasia Logo" class="w-full px-4 mx-auto" />
@@ -158,7 +158,8 @@
                                 <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
                                     alt="Profile picture">
                                 <div class="ml-4">
-                                    <h2 class="text-lg font-bold text-left text-darkblue">{{ Auth::user()->name }}</h2>
+                                    <h2 class="text-lg font-bold text-left text-darkblue">{{ Auth::user()->name }}
+                                    </h2>
                                     <p class="text-left text-subheading">Ayo lebih produktif 👋 </p>
                                 </div>
                             </div>
@@ -200,41 +201,48 @@
             </div>
 
             <div class="grid grid-cols-3">
-                <div id="done" class="relative col-span-2 m-10 overflow-x-auto border">
+                <div
+                    class="relative flex items-center justify-between col-span-2 mx-10 mt-10 border border-t border-l border-r">
+                    <div class="flex m-4">
+                        <h1 class="font-semibold text-darkblue">
+                            Done
+                        </h1>
+                    </div>
+                </div>
+
+                <div id="done" class="relative col-span-2 mx-10 overflow-y-auto border max-h-[550px]">
                     <table class="w-full text-sm text-left text-gray-500 rtl:text-right">
-                        <div class="flex items-center justify-between border-b">
-                            <div class="flex m-4">
-                                <h1 class="font-semibold text-darkblue">
-                                    Done
-                                </h1>
-                            </div>
-                        </div>
                         <tbody>
                             @foreach ($dones as $done)
                                 <tr class="bg-white hover:bg-gray-50" id="index_{{ $done->id }}">
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-table-search-{{ $done->id }}" type="checkbox"
-                                                class="w-4 h-4 text-primary bg-white border-2 border-gray-400 rounded focus:ring-lightprimary-800-800 focus:ring-2 checkbox-todo"
+                                                class="w-4 h-4 bg-white border-2 border-gray-400 rounded text-primary focus:ring-lightprimary-800-800 focus:ring-2 checkbox-todo"
                                                 {{ $done->status === 'done' ? 'checked' : '' }}>
                                             <label for="checkbox-table-search-{{ $done->id }}"
                                                 class="sr-only">checkbox</label>
                                         </div>
                                     </td>
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <th class="px-6 py-4 font-medium text-gray-900">
                                         <h5
                                             class="mb-1 text-sm font-bold tracking-tight text-gray-900 @if ($done->status === 'done') line-through @endif">
                                             {{ $done->title }}</h5>
-                                        <p
-                                            class="mb-2 text-xs font-normal text-darkgray @if ($done->status === 'done') line-through @endif">
-                                            {{ $done->comment }}</p>
-                                        <div class="flex justify-start">
-                                            <p class="mr-2 text-xs font-bold text-lightprimary">{{ $done->clock }} AM</p>
+                                        <div style="word-wrap: break-word; width: 550px">
+                                            <p
+                                                class="mb-2 text-xs font-normal text-darkgray @if ($done->status === 'done') line-through @endif">
+                                                {{ $done->comment }}
+                                            </p>
+                                        </div>
+                                        <div class="flex items-center justify-start">
+                                            <p class="mr-2 text-xs font-bold text-lightprimary">{{ $done->clock }} AM
+                                            </p>
                                             <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="2" cy="2" r="2" fill="#737373" />
                                             </svg>
-                                            <p class="ml-2 text-xs font-normal text-subheading">{{ $done->date }}</p>
+                                            <p class="ml-2 text-xs font-normal text-subheading">{{ $done->date }}
+                                            </p>
                                         </div>
                                     </th>
                                 </tr>
@@ -243,7 +251,7 @@
                     </table>
                 </div>
 
-                <div id="clock_date" class="relative col-span-1 my-10 mr-8 overflow-x-auto border">
+                <div id="clock_date" class="relative col-span-1 pb-2 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
                             <h1 class="m-0.5 font-semibold">
@@ -255,7 +263,7 @@
                         <iframe
                             src="https://free.timeanddate.com/clock/i9969c3o/n450/szw110/szh110/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee"
                             frameborder="0" width="110" height="110"></iframe>
-                        <div id="custom-clock" style="color: #2B2E4A; font-size: 25px; margin-left:10px"></div>
+                        <div id="custom-clock" style="color: #2B2E4A; font-size: 23px; margin-left:10px"></div>
 
                         <script>
                             function updateClock() {
