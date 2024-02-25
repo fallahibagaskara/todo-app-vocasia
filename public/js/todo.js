@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
-            let id = checkbox.getAttribute('id').split('-')[3]; // Get the todo id from the checkbox id
+            let id = checkbox.getAttribute('id').split('-')[3];
             if (checkbox.checked) {
                 Swal.fire({
                     title: "Selesaikan task?",
@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                Swal.fire(
-                                    'Sukses!',
-                                    'Task ditandai sebagai selesai!',
-                                    'success'
-                                ).then((result) => {
+                                Swal.fire({
+                                        title: "Sukses!",
+                                        text: "Task ditandai sebagai selesai!",
+                                        confirmButtonColor: "#BA181B",
+                                    }).then((result) => {
                                     location.reload();
                                   });
                             } else {
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         });
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        // Tindakan ketika tombol batal ditekan
                     }
                 });
                 } else {
@@ -81,18 +80,17 @@ document.addEventListener('DOMContentLoaded', function () {
                             .then(response => response.json())
                             .then(data => {
                                 if (data.success) {
-                                    Swal.fire(
-                                        'Sukses!',
-                                        'Status task diperbarui!',
-                                        'success'
-                                    ).then((result) => {
+                                    Swal.fire({
+                                        title: "Sukses!",
+                                        text: "Task ditandai sebagai belum selesai!",
+                                        confirmButtonColor: "#BA181B",
+                                    }).then((result) => {
                                         location.reload();
                                     });
                                 } else {
                                     Swal.fire(
                                         'Gagal!',
                                         'Ada yang tidak beres!',
-                                        'error'
                                     ).then((result) => {
                                         location.reload();
                                     });
@@ -101,11 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             .catch(error => {
                                 console.error('Error:', error);
                                 Swal.fire("Terjadi kesalahan saat memperbarui status task!", {
-                                    icon: "error",
                                 });
                             });
                         } else if (result.dismiss === Swal.DismissReason.cancel) {
-                            // Tindakan ketika tombol batal ditekan
                         }
                     });
                 }
