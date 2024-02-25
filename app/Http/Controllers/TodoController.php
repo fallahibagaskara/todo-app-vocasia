@@ -54,18 +54,22 @@ class TodoController extends Controller
     }
 
     /**
-     * show
+     * mark
      *
      * @param  mixed $todo
      * @return void
      */
-    public function show(Todo $todo)
+    public function mark(Request $request, $id)
     {
-        return response()->json([
-            'success' => true,
-            'message' => 'Detail data task',
-            'data'    => $todo  
-        ]); 
+        $todo = Todo::find($id);
+        if (!$todo) {
+            return response()->json(['success' => false, 'message' => 'Todo not found'], 404);
+        }
+
+        $todo->status = $request->input('status', 'done');
+        $todo->save();
+
+        return response()->json(['success' => true, 'message' => 'Todo status updated successfully'], 200);
     }
 
         /**

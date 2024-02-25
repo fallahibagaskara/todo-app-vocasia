@@ -1,3 +1,60 @@
+// checkbox
+document.addEventListener('DOMContentLoaded', function () {
+    let checkboxes = document.querySelectorAll('.checkbox-todo');
+    let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            let id = checkbox.getAttribute('id').split('-')[3]; // Get the todo id from the checkbox id
+            if (checkbox.checked) {
+                Swal.fire({
+                    title: "Selesaikan task?",
+                    text: "Setelah dikonfirmasi, task ini akan ditandai sebagai selesai!",
+                    icon: "warning",
+                    confirmButtonText: "Selesai",
+                })
+                .then((willConfirm) => {
+                    if (willConfirm) {
+                        fetch(`/todo/mark/${id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': csrf
+                            },
+                            body: JSON.stringify({ status: 'done' })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire(
+                                    'Sukses!',
+                                    'Task ditandai sebagai selesai!',
+                                    'success'
+                                ).then((result) => {
+                                    location.reload();
+                                  });
+                            } else {
+                                Swal.fire(
+                                    'Gagal!',
+                                    'Ada yang tidak beres!',
+                                    'error'
+                                ).then((result) => {
+                                    location.reload();
+                                  });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            Swal.fire("Terjadi kesalahan saat memperbarui task!", {
+                                icon: "error",
+                            });
+                        });
+                    }
+                });
+            }
+        });
+    });
+});
+
 $(function () {
     // add new todo ajax request
     $("#add_todo_form").submit(function (e) {
@@ -126,7 +183,7 @@ $(function () {
                         'Task berhasil diubah!',
                         'success'
                     )
-                    fetchAllTodos();
+                    // fetchAllTodos();
                 }
                 $("#edit_todo_btn").text('Submit');
                 $("#edit_todo_form")[0].reset();
@@ -164,7 +221,7 @@ $(function () {
                                 'Task berhasil dihapus.',
                                 'success'
                             )
-                            fetchAllTodos();
+                            // fetchAllTodos();
                         }
                         else {
                             Swal.fire(
@@ -172,7 +229,7 @@ $(function () {
                                 'Task gagal dihapus.',
                                 'error'
                             )
-                            fetchAllTodos();
+                            // fetchAllTodos();
                         }
                     }
                 });
@@ -181,7 +238,7 @@ $(function () {
     });
 
     // fetch all todo ajax request
-//     fetchAllTodos();
+    // fetchAllTodos();
 
 //     function fetchAllTodos() {
 //         $.ajax({

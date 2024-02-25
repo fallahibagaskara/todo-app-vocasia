@@ -22,7 +22,7 @@
     @livewireStyles
 </head>
 
-<body class="antialiased font-inter">
+<body class="font-inter antialiased">
     <div id="view" class="flex flex-row w-screen h-full" x-data="{ sidenav: true }">
         <button @click="sidenav = true"
             class="absolute top-0 left-0 p-2 text-gray-500 bg-white border-2 border-gray-200 rounded-md shadow-lg focus:bg-gray-800 focus:outline-none focus:text-white sm:hidden">
@@ -76,9 +76,7 @@
                         <span class="ml-2">Done</span>
                     </a>
                     <a href="{{ route('overdue.index') }}"
-                        class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-red-700 hover:text-base
-    {{ Route::is('overdue.index') ? 'text-black border-l-2 border-red-500' : 'text-gray-500 hover:text-gray-700 hover:border-red-500' }}">
-
+                        class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-red-700 hover:text-base {{ Route::is('overdue.index') ? 'text-black border-l-2 border-red-500' : 'text-gray-500 hover:text-gray-700 hover:border-red-500' }}">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 18 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect x="7" y="1" width="4" height="18" fill="#BA181B" />
@@ -92,7 +90,6 @@
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-red-500 hover:border-l-2 hover:text-red-700 hover:text-base"
                             type="button">
-                            {{-- CEK LAGI ICONNYA --}}
                             <div class="flex items-center">
                                 <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 27 27"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +105,6 @@
                             <!-- Logout Modal -->
                         </button>
                     </div>
-
                     <div id="popup-modal" tabindex="-1"
                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-md max-h-full p-4">
@@ -142,9 +138,7 @@
                                             href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                             {{ __('Keluar') }}
                                         </button>
-
                                     </form>
-
                                 </div>
                             </div>
                         </div>
@@ -168,7 +162,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div>
                         <div class="grid justify-end grid-cols-3 col-span-1 gap-0">
                             <div class="flex flex-col items-center justify-center h-20 p-0 m-0 w-36">
@@ -200,9 +193,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
 
@@ -270,7 +260,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div id="clock_date" class="relative col-span-1 my-10 mr-8 overflow-x-auto border">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
@@ -307,105 +296,206 @@
                     </div>
                 </div>
             </div>
-    </div>
 
-    <!-- Main modal -->
-    <div id="crud-modal" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative w-full max-w-md max-h-full p-4">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between p-4 border-b rounded-t md:p-5 dark:border-gray-600">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Task
-                    </h3>
-                    <button type="button"
-                        class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-toggle="crud-modal">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <form class="p-4 md:p-5">
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="col-span-2">
-                            <label for="title"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
-                                Task</label>
-                            <input type="text" name="title" id="title"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Judul Task" required="">
+            <!-- Main modal -->
+            <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative w-full max-w-md max-h-full p-4">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div
+                            class="flex items-center justify-between p-4 border-b rounded-t md:p-5 dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                Task
+                            </h3>
+                            <button type="button"
+                                class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-toggle="crud-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
                         </div>
-                        <div class="col-span-2">
-                            <label for="comment"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
-                                Task</label>
-                            <textarea name="comment" id="comment" rows="4"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Komentar Task" required=""></textarea>
-                        </div>
-                        <div class="col-span-2">
-                            <label for="clock"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
-                                Task</label>
-                            <div class="flex items-center">
-                                {{-- <div class="relative">
+                        <!-- Modal body -->
+                        <form class="p-4 md:p-5">
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="col-span-2">
+                                    <label for="title"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
+                                        Task</label>
+                                    <input type="text" name="title" id="title"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Judul Task" required="">
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="comment"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
+                                        Task</label>
+                                    <textarea name="comment" id="comment" rows="4"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Komentar Task" required=""></textarea>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="clock"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
+                                        Task</label>
+                                    <div class="flex items-center">
+                                        {{-- <div class="relative">
                                             <input name="clock_hour" id="clock_hour" type="time"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="00">
                                         </div> --}}
-                                <div class="relative">
-                                    <input name="clock_hour" id="clock_hour" type="number"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="00">
+                                        <div class="relative">
+                                            <input name="clock_hour" id="clock_hour" type="number"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="00">
+                                        </div>
+                                        <span class="mx-4 text-gray-500">:</span>
+                                        <div class="relative">
+                                            <input name="clock_minute" id="clock_minute" type="number"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="00">
+                                        </div>
+                                    </div>
                                 </div>
-                                <span class="mx-4 text-gray-500">:</span>
-                                <div class="relative">
-                                    <input name="clock_minute" id="clock_minute" type="number"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="00">
+                                <div class="col-span-2">
+                                    <label for="date"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                                        Task</label>
+                                    <div class="relative max-w-sm">
+                                        <div
+                                            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                            </svg>
+                                        </div>
+                                        <input datepicker datepicker-autohide type="text" name="date"
+                                            id="date"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                            placeholder="Select date">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-span-2">
-                            <label for="date"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
-                                Task</label>
-                            <div class="relative max-w-sm">
-                                <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </div>
-                                <input datepicker datepicker-autohide type="text" name="date" id="date"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-                                    placeholder="Select date">
+                            <div class="flex justify-center col-span-2">
+                                <button type="submit"
+                                    class="text-white w-1/2 items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                    Tambahkan
+                                </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                    <div class="flex justify-center col-span-2">
-                        <button type="submit"
-                            class="text-white w-1/2 items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                            Tambahkan
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
+
+            <!-- Edit modal -->
+            <div id="editTodoModal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative w-full max-w-md max-h-full p-4">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-center p-4 border-b rounded-t md:p-5 dark:border-gray-600"
+                            data-modal-toggle="editTodoModal">
+                            <div class="flex items-center justify-center flex-grow">
+                                <h3 class="ml-8" style="font-size: 20px ; font-weight: 700 ; color: #BA181B ;">
+                                    Task
+                                </h3>
+                            </div>
+                            <div>
+                                <button type="button"
+                                    class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Modal body -->
+                        <form action="#" method="POST" id="edit_todo_form" class="p-4 md:p-5">
+                            @csrf
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="col-span-2">
+                                    <label for="title"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
+                                        Task</label>
+                                    <input type="text" name="title" id="title"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Judul Task" required="">
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="comment"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
+                                        Task</label>
+                                    <textarea name="comment" id="comment" rows="4"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        placeholder="Komentar Task" required=""></textarea>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="clock"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
+                                        Task</label>
+                                    <div class="flex items-center">
+                                        {{-- <div class="relative">
+                                        <input name="clock_hour" id="clock_hour" type="time"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="00">
+                                    </div> --}}
+                                        <div class="relative">
+                                            <input name="clock_hour" id="clock_hour" type="number"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="00">
+                                        </div>
+                                        <span class="mx-4 text-gray-500">:</span>
+                                        <div class="relative">
+                                            <input name="clock_minute" id="clock_minute" type="number"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="00">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="date"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                                        Task</label>
+                                    <div class="relative max-w-sm">
+                                        <div
+                                            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                            </svg>
+                                        </div>
+                                        <input datepicker datepicker-autohide type="text" name="date"
+                                            id="date"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                                            placeholder="Select date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center col-span-2">
+                                <button type="submit" id="add_todo_btn"
+                                    class="text-white w-1/2 items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                    Tambahkan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-
-
-    </div>
-
-    </main>
 
     <!-- Flowbite -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

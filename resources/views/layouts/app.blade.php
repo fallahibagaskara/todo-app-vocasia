@@ -22,7 +22,7 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-inter antialiased">
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
