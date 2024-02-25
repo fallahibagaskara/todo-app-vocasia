@@ -1,57 +1,63 @@
 // checkbox
 document.addEventListener('DOMContentLoaded', function () {
     let checkboxes = document.querySelectorAll('.checkbox-todo');
+    let confirmationModal = document.getElementById('confirmation-modal');
     let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    let todoId = null;
+
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
-            let id = checkbox.getAttribute('id').split('-')[3]; // Get the todo id from the checkbox id
+            let id = checkbox.getAttribute('id').split('-')[3];
             if (checkbox.checked) {
-                Swal.fire({
-                    title: "Selesaikan task?",
-                    text: "Setelah dikonfirmasi, task ini akan ditandai sebagai selesai!",
-                    icon: "warning",
-                    confirmButtonText: "Selesai",
-                })
-                .then((willConfirm) => {
-                    if (willConfirm) {
-                        fetch(`/todo/mark/${id}`, {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': csrf
-                            },
-                            body: JSON.stringify({ status: 'done' })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire(
-                                    'Sukses!',
-                                    'Task ditandai sebagai selesai!',
-                                    'success'
-                                ).then((result) => {
-                                    location.reload();
-                                  });
-                            } else {
-                                Swal.fire(
-                                    'Gagal!',
-                                    'Ada yang tidak beres!',
-                                    'error'
-                                ).then((result) => {
-                                    location.reload();
-                                  });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            Swal.fire("Terjadi kesalahan saat memperbarui task!", {
-                                icon: "error",
-                            });
-                        });
+                confirmationModal.classList.remove('hidden');
+                todoId = id;
+
+                confirmationModal.addEventListener('click', function (event) {
+                    if (event.target === confirmationModal) {
+                        confirmationModal.classList.add('hidden');
+                        todoId = null;
                     }
                 });
             }
         });
+    });
+    document.getElementById('btn-confirm-done').addEventListener('click', function () {
+        if (todoId) {
+            fetch(`/todo/mark/${todoId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf
+                },
+                body: JSON.stringify({ status: 'done' })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire(
+                        'Sukses!',
+                        'Task ditandai sebagai selesai!',
+                        'success'
+                    ).then((result) => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire(
+                        'Gagal!',
+                        'Ada yang tidak beres!',
+                        'error'
+                    ).then((result) => {
+                        location.reload();
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire("Terjadi kesalahan saat memperbarui task!", {
+                    icon: "error",
+                });
+            });
+        }
     });
 });
 
