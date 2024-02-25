@@ -67,9 +67,7 @@
                     </a>
                     <a href="{{ route('done.index') }}"
                         class="px-2 py-2 text-sm font-medium transition duration-150 ease-in-out hover:text-red-700 hover:text-base
-                        @if (Route::is('done.index')) text-black border-l-2 border-red-500
-                        @else
-                            text-gray-500 hover:text-gray-700 hover:border-red-500 @endif">
+                    {{ Route::is('done.index') ? 'text-black border-l-2 border-red-500' : 'text-gray-500 hover:text-gray-700 hover:border-red-500' }}">
                         <svg class="inline-block w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 22 22"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="11" fill="#DBA7A9" />
