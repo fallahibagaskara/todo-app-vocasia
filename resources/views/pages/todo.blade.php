@@ -94,7 +94,7 @@
                         </svg>
                         <span class="ml-2">Overdue</span>
                     </a>
-                    <div class="fixed bottom-0">
+                    <div class="fixed bottom-4">
                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                             class="px-2 py-2 text-sm font-medium text-gray-100 transition duration-150 ease-in-out hover:scale-105 hover:border-red-500 hover:border-l-2 hover:text-red-700 hover:text-base"
                             type="button">
