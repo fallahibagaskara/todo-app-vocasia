@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     let checkboxes = document.querySelectorAll('.checkbox-todo');
     let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
+
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             let id = checkbox.getAttribute('id').split('-')[3]; // Get the todo id from the checkbox id
@@ -10,11 +10,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     title: "Selesaikan task?",
                     text: "Setelah dikonfirmasi, task ini akan ditandai sebagai selesai!",
-                    icon: "warning",
+                    cancelButtonText: "Cancel",
                     confirmButtonText: "Selesai",
+                    cancelButtonColor: "#BA181B",
+                    confirmButtonColor: "#BA181B",
+                    showCancelButton: true,
+                    showCloseButton: true,
                 })
-                .then((willConfirm) => {
-                    if (willConfirm) {
+                .then((result) => {
+                    if (result.isConfirmed) {
                         fetch(`/todo/mark/${id}`, {
                             method: 'PUT',
                             headers: {
@@ -49,12 +53,65 @@ document.addEventListener('DOMContentLoaded', function () {
                                 icon: "error",
                             });
                         });
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        // Tindakan ketika tombol batal ditekan
                     }
                 });
-            }
+                } else {
+                    Swal.fire({
+                        title: "Kembalikan task?",
+                        text: "Setelah dikonfirmasi, task ini akan ditandai sebagai belum selesai!",
+                        cancelButtonText: "Cancel",
+                        confirmButtonText: "Kembalikan",
+                        cancelButtonColor: "#BA181B",
+                        confirmButtonColor: "#BA181B",
+                        showCancelButton: true,
+                        showCloseButton: true,
+                    })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            fetch(`/todo/mark/${id}`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': csrf
+                                },
+                                body: JSON.stringify({ status: 'todo' })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire(
+                                        'Sukses!',
+                                        'Status task diperbarui!',
+                                        'success'
+                                    ).then((result) => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire(
+                                        'Gagal!',
+                                        'Ada yang tidak beres!',
+                                        'error'
+                                    ).then((result) => {
+                                        location.reload();
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                Swal.fire("Terjadi kesalahan saat memperbarui status task!", {
+                                    icon: "error",
+                                });
+                            });
+                        } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            // Tindakan ketika tombol batal ditekan
+                        }
+                    });
+                }
+            });
         });
     });
-});
 
 $(function () {
     // add new todo ajax request

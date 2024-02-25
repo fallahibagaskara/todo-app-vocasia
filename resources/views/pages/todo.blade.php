@@ -26,6 +26,14 @@
 
     <!-- Styles -->
     @livewireStyles
+
+    <style>
+        /* CSS khusus untuk tombol batal */
+        .swal2-cancell {
+            color: #ff0000; /* Warna teks */
+            background-color: transparent !important; /* Latar belakang transparan */
+        }
+    </style>
 </head>
 <!-- component -->
 
