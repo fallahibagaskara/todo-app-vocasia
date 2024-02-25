@@ -379,13 +379,13 @@
                                         <div class="relative">
                                             <input name="clock_hour" id="clock_hour" type="number"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="00">
+                                                placeholder="00" required="">
                                         </div>
                                         <span class="mx-4 text-gray-500">:</span>
                                         <div class="relative">
                                             <input name="clock_minute" id="clock_minute" type="number"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="00">
+                                                placeholder="00" required="">
                                         </div>
                                     </div>
                                 </div>
@@ -406,7 +406,7 @@
                                         <input datepicker datepicker-autohide type="text" name="date"
                                             id="date"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-                                            placeholder="Select date">
+                                            placeholder="Select date" required="">
                                     </div>
                                 </div>
                             </div>
