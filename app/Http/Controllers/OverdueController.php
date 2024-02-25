@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Todo;
 
 class OverdueController extends Controller
 {
-    public function index(){
-        return view('pages.overdue');
+    public function index()
+    {
+        $overdues = Todo::where('status', 'overdue')->get();
+        return view('pages.overdue', compact('overdues'));
     }
 }

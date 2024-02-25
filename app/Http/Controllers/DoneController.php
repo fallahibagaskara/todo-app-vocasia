@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Todo;
 
 class DoneController extends Controller
 {
-    public function index(){
-        return view('pages.done');
+    public function index()
+    {
+        $dones = Todo::where('status', 'done')->get();
+        return view('pages.done', compact('dones'));
     }
 }
