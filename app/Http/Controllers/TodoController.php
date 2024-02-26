@@ -11,7 +11,11 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::latest()->get();
-        return view('pages.todo', compact('todos'));
+        $todoCount = Todo::where('status', 'todo')->count();
+        $doneCount = Todo::where('status', 'done')->count();
+        $overdueCount = Todo::where('status', 'overdue')->count();
+
+        return view('pages.todo', compact('todos','todoCount', 'doneCount', 'overdueCount'));
     }
 
     /**
@@ -81,7 +85,7 @@ class TodoController extends Controller
         return response()->json($todo);
     }
 
-        /**
+    /**
      * update
      *
      * @param  mixed $request
