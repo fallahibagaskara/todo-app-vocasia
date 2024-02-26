@@ -15,7 +15,7 @@ class TodoController extends Controller
         $doneCount = Todo::where('status', 'done')->count();
         $overdueCount = Todo::where('status', 'overdue')->count();
 
-        return view('pages.todo', compact('todos','todoCount', 'doneCount', 'overdueCount'));
+        return view('pages.todo', compact('todos', 'todoCount', 'doneCount', 'overdueCount'));
     }
 
     /**
@@ -60,7 +60,7 @@ class TodoController extends Controller
 
         $todo->status = $request->input('status', 'done');
 
-        if($todo->save()){
+        if ($todo->save()) {
             return response()->json([
                 'status' => 200,
             ]);

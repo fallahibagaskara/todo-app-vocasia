@@ -171,7 +171,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/todo-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{$todoCount}}</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{ $todoCount }}</span>
                                         <span class="text-sm font-medium text-white">To Do Task</span>
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/done-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{$doneCount}}</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{ $doneCount }}</span>
                                         <span class="text-sm font-medium text-white">Done Task</span>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{$overdueCount}}</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{ $overdueCount }}</span>
                                         <span class="text-sm font-medium text-white">Overdue Task</span>
                                     </div>
                                 </div>
@@ -250,7 +250,8 @@
                     </table>
                 </div>
 
-                <div id="clock_date" class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
+                <div id="clock_date"
+                    class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
                             <h1 class="m-0.5 font-semibold">
@@ -389,6 +390,9 @@
     <!-- Flowbite -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+
+    <!-- Todo -->
+    <script src="{{ asset('js/todo.js') }}"></script>
 
 </body>
 

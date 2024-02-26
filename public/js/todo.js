@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         })
                         .then(response => response.json())
                         .then(data => {
-                            if (data.success) {
+                            if (data.status = 200) {
                                 Swal.fire({
                                         title: "Sukses!",
                                         text: "Task ditandai sebagai selesai!",
@@ -44,10 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
                                     location.reload();
                                   });
                             } else {
-                                Swal.fire(
-                                    'Gagal!',
-                                    'Ada yang tidak beres!'
-                                ).then((result) => {
+                                Swal.fire({
+                                    title: "Gagal!",
+                                    text: "Terjadi kesalahan!",
+                                    confirmButtonColor: "#BA181B",
+                                }).then((result) => {
                                     location.reload();
                                   });
                             }
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             })
                             .then(response => response.json())
                             .then(data => {
-                                if (data.success) {
+                                if (data.status = 200) {
                                     Swal.fire({
                                         title: "Sukses!",
                                         text: "Task ditandai sebagai belum selesai!",
@@ -98,10 +99,11 @@ document.addEventListener('DOMContentLoaded', function () {
                                         location.reload();
                                     });
                                 } else {
-                                    Swal.fire(
-                                        'Gagal!',
-                                        'Ada yang tidak beres!',
-                                    ).then((result) => {
+                                    Swal.fire({
+                                        title: "Gagal!",
+                                        text: "Terjadi kesalahan!",
+                                        confirmButtonColor: "#BA181B",
+                                    }).then((result) => {
                                         location.reload();
                                     });
                                 }
