@@ -171,7 +171,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div>
                         <div class="grid justify-end grid-cols-3 col-span-1 gap-0">
                             <div class="flex flex-col items-center justify-center h-20 p-0 m-0 w-36">

@@ -168,7 +168,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/todo-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">3</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{$todoCount}}</span>
                                         <span class="text-sm font-medium text-white">To Do Task</span>
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/done-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">2</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{$doneCount}}</span>
                                         <span class="text-sm font-medium text-white">Done Task</span>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">7</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{$overdueCount}}</span>
                                         <span class="text-sm font-medium text-white">Overdue Task</span>
                                     </div>
                                 </div>
