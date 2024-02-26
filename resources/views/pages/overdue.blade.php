@@ -268,7 +268,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="clock_date" class="relative col-span-1 pb-2 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
+                <div id="clock_date" class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
                             <h1 class="m-0.5 font-semibold">
@@ -413,7 +413,7 @@
                             data-modal-toggle="editTodoModal">
                             <div class="flex items-center justify-center flex-grow">
                                 <h3 class="ml-8" style="font-size: 20px ; font-weight: 700 ; color: #BA181B ;">
-                                    Task
+                                    Edit Task
                                 </h3>
                             </div>
                             <div>
@@ -431,6 +431,7 @@
                         <!-- Modal body -->
                         <form action="#" method="POST" id="edit_todo_form" class="p-4 md:p-5">
                             @csrf
+                            <input type="hidden" name="todo_id" id="todo_id">
                             <div class="grid grid-cols-2 gap-4 mb-4">
                                 <div class="col-span-2">
                                     <label for="title"
@@ -449,57 +450,41 @@
                                         placeholder="Komentar Task" required=""></textarea>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="clock"
+                                    <label for="time"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
                                         Task</label>
-                                    <div class="flex items-center">
-                                        {{-- <div class="relative">
-                                        <input name="clock_hour" id="clock_hour" type="time"
-                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="00">
-                                    </div> --}}
-                                        <div class="relative">
-                                            <input name="clock_hour" id="clock_hour" type="number"
-                                                class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="00">
-                                        </div>
-                                        <span class="mx-4 text-gray-500">:</span>
-                                        <div class="relative">
-                                            <input name="clock_minute" id="clock_minute" type="number"
-                                                class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="00">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-span-2">
-                                    <label for="date"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
-                                        Task</label>
-                                    <div class="relative max-w-sm">
-                                        <div
-                                            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 20 20">
-                                                <path
-                                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                            </svg>
-                                        </div>
-                                        <input datepicker datepicker-autohide type="text" name="date"
-                                            id="date"
-                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
-                                            placeholder="Select date">
-                                    </div>
+                                        <input type="time" name="time" id="time"
+                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        required="">
                                 </div>
                             </div>
-                            <div class="flex justify-center col-span-2">
-                                <button type="submit" id="add_todo_btn"
-                                    class="text-white w-1/2 items-center bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
-                                    Tambahkan
-                                </button>
+                            <div class="col-span-2">
+                                <label for="date"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                                    Task</label>
+                                <div class="relative max-w-sm">
+                                    <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path
+                                                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                        </svg>
+                                    </div>
+                                    <input datepicker datepicker-autohide type="text" name="date"
+                                        id="date"
+                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
+                                        placeholder="Select date">
+                                </div>
                             </div>
-                        </form>
                     </div>
+                    <div class="flex justify-center col-span-2">
+                        <button type="submit" id="edit_todo_btn"
+                            class="text-white w-1/2 items-center bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
+                            Submit
+                        </button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </main>

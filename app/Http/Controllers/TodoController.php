@@ -26,22 +26,10 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'title'     => 'required',
-        //     'comment'   => 'required',
-        //     // 'clock'     => 'required',
-        //     'date'      => 'required',
-        //     'status'    => 'required',
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 422);
-        // }
-
         $todoData = [
             'title'     => $request->title,
             'comment'   => $request->comment,
-            'clock'     => "07:00",
+            'clock'     => $request->time,
             'date'      => $request->date,
             'status'    => "todo",
         ];
@@ -94,26 +82,13 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'title'     => 'required',
-        //     'comment'   => 'required',
-        //     // 'clock'     => 'required',
-        //     'date'      => 'required',
-        //     'status'    => 'required',
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 422);
-        // }
-
         $todo = Todo::findOrFail($request->todo_id);
 
         $todoData = [
             'title'     => $request->title,
             'comment'   => $request->comment,
-            'clock'     => "07:00",
+            'clock'     => $request->time,
             'date'      => $request->date,
-            'status'    => "todo",
         ];
 
         if ($todo->update($todoData)) {
@@ -127,6 +102,7 @@ class TodoController extends Controller
             'status' => 500,
         ]);
     }
+
     public function delete(Request $request)
     {
         $todo = Todo::find($request->id);

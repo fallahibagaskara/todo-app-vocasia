@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     title: "Selesaikan task?",
                     text: "Setelah dikonfirmasi, task ini akan ditandai sebagai selesai!",
-                    cancelButtonText: "Cancel",
+                    cancelButtonText: "Batalkan",
                     confirmButtonText: "Selesai",
-                    cancelButtonColor: "#BA181B",
+                    cancelButtonColor: "#454141",
                     confirmButtonColor: "#BA181B",
                     showCancelButton: true,
                     showCloseButton: true,
@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             } else {
                                 Swal.fire(
                                     'Gagal!',
-                                    'Ada yang tidak beres!',
-                                    'error'
+                                    'Ada yang tidak beres!'
                                 ).then((result) => {
                                     location.reload();
                                   });
@@ -67,9 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     Swal.fire({
                         title: "Kembalikan task?",
                         text: "Setelah dikonfirmasi, task ini akan ditandai sebagai belum selesai!",
-                        cancelButtonText: "Cancel",
+                        cancelButtonText: "Batalkan",
                         confirmButtonText: "Kembalikan",
-                        cancelButtonColor: "#BA181B",
+                        cancelButtonColor: "#454141",
                         confirmButtonColor: "#BA181B",
                         showCancelButton: true,
                         showCloseButton: true,
@@ -143,11 +142,11 @@ $(function () {
             success: function (response) {
                 if (response.status == 200) {
                     closeModal()
-                    Swal.fire(
-                        'Sukses!',
-                        'Task berhasil ditambahkan!',
-                        'success'
-                    ).then((result) => {
+                    Swal.fire({
+                        title: 'Sukses!',
+                        text: "Task berhasil ditambahkan.",
+                        confirmButtonColor: '#BA181B',
+                    }).then((result) => {
                         location.reload();
                       });
                 }
@@ -199,11 +198,11 @@ $(function () {
             success: function (response) {
                 if (response.status == 200) {
                     closeEditModal()
-                    Swal.fire(
-                        'Sukses!',
-                        'Task berhasil diubah!',
-                        'success'
-                    ).then((result) => {
+                    Swal.fire({
+                        title: 'Sukses!',
+                        text: "Task berhasil diubah.",
+                        confirmButtonColor: '#BA181B',
+                    }).then((result) => {
                         location.reload();
                       });
                 }
@@ -217,13 +216,15 @@ $(function () {
         let id = $(this).data('id');
         let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
+            title: 'Hapus task?',
+            text: "Setelah dikonfirmasi, task ini akan dihapus dari database!",
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            cancelButtonText: "Batalkan",
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonColor: "#454141",
+            confirmButtonColor: "#BA181B",
+            showCancelButton: true,
+            showCloseButton: true,
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -235,21 +236,23 @@ $(function () {
                     },
                     success: function (response) {
                         if (response.status == 200) {
-                            Swal.fire(
-                                'Sukses!',
-                                'Task berhasil dihapus.',
-                                'success'
-                            ).then((result) => {
+                            Swal.fire({
+                                title: 'Sukses!',
+                                text: "Task berhasil dihapus.",
+                                confirmButtonColor: '#BA181B',
+                                cancelButtonColor: '#454141',
+                            }).then((result) => {
                                 $(`#todo-${id}`).remove();
                                 location.reload();
                               });
                         }
                         else {
-                            Swal.fire(
-                                'Gagal!',
-                                'Task gagal dihapus.',
-                                'error'
-                            )
+                            SSwal.fire({
+                                title: 'Gagal!',
+                                text: "Task gagal dihapus.",
+                                confirmButtonColor: '#BA181B',
+                                cancelButtonColor: '#454141',
+                            })
                         }
                     }
                 });

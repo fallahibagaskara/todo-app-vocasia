@@ -250,7 +250,7 @@
                     </table>
                 </div>
 
-                <div id="clock_date" class="relative col-span-1 pb-2 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
+                <div id="clock_date" class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
                             <h1 class="m-0.5 font-semibold">
