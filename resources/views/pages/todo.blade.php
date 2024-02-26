@@ -493,6 +493,7 @@
                         <!-- Modal body -->
                         <form action="#" method="POST" id="edit_todo_form" class="p-4 md:p-5">
                             @csrf
+                            <input type="hidden" name="todo_id" id="todo_id">
                             <div class="grid grid-cols-2 gap-4 mb-4">
                                 <div class="col-span-2">
                                     <label for="title"

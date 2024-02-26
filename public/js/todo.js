@@ -222,7 +222,7 @@ $(function () {
     // update todo ajax request
     $("#edit_todo_form").submit(function (e) {
         const editTodoModal = new Modal(document.getElementById('editTodoModal'))
-        function closeeditModal() {
+        function closeEditModal() {
             editTodoModal.hide()
             document.querySelector("body > div[modal-backdrop]")?.remove()
         }
@@ -239,7 +239,7 @@ $(function () {
             dataType: 'json',
             success: function (response) {
                 if (response.status == 200) {
-                    closeeditModal()
+                    closeEditModal()
                     Swal.fire(
                         'Sukses!',
                         'Task berhasil diubah!',

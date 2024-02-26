@@ -102,6 +102,8 @@ class TodoController extends Controller
         //     return response()->json($validator->errors(), 422);
         // }
 
+        $todo = Todo::findOrFail($request->todo_id);
+
         $todoData = [
             'title'     => $request->title,
             'comment'   => $request->comment,
