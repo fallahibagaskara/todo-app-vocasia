@@ -15,6 +15,12 @@
     <!-- Flowbite -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 
+    <!-- jQuery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -156,7 +162,8 @@
                                 <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
                                     alt="Profile picture">
                                 <div class="ml-4">
-                                    <h2 class="text-lg font-bold text-left text-darkblue">{{ Auth::user()->name }}</h2>
+                                    <h2 class="text-lg font-bold text-left text-darkblue">{{ Auth::user()->name }}
+                                    </h2>
                                     <p class="text-left text-subheading">Ayo lebih produktif 👋 </p>
                                 </div>
                             </div>
@@ -168,7 +175,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/todo-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{$todoCount}}</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{ $todoCount }}</span>
                                         <span class="text-sm font-medium text-white">To Do Task</span>
                                     </div>
                                 </div>
@@ -177,7 +184,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/done-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{$doneCount}}</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{ $doneCount }}</span>
                                         <span class="text-sm font-medium text-white">Done Task</span>
                                     </div>
                                 </div>
@@ -186,7 +193,7 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{$overdueCount}}</span>
+                                        <span class="mr-2 text-6xl font-medium text-white">{{ $overdueCount }}</span>
                                         <span class="text-sm font-medium text-white">Overdue Task</span>
                                     </div>
                                 </div>
@@ -197,7 +204,8 @@
             </div>
 
             <div class="grid grid-cols-3">
-                <div class="relative flex items-center justify-between col-span-2 mx-10 mt-10 border border-t border-l border-r">
+                <div
+                    class="relative flex items-center justify-between col-span-2 mx-10 mt-10 border border-t border-l border-r">
                     <div class="flex m-4">
                         <h1 class="font-semibold text-darkblue">
                             Overdue
@@ -221,14 +229,14 @@
                                     <th class="px-6 py-4 font-medium text-gray-900">
                                         <h5 class="mb-1 text-sm font-bold tracking-tight text-primary">
                                             {{ $overdue->title }}</h5>
-                                            <div style="word-wrap: break-word; width: 550px">
-                                                <p
-                                                    class="mb-2 text-xs font-normal text-darkgray">
-                                                    {{ $overdue->comment }}
-                                                </p>
-                                            </div>
+                                        <div style="word-wrap: break-word; width: 550px">
+                                            <p class="mb-2 text-xs font-normal text-darkgray">
+                                                {{ $overdue->comment }}
+                                            </p>
+                                        </div>
                                         <div class="flex items-center justify-start">
-                                            <p class="mr-2 text-xs font-bold text-lightprimary">{{ \Carbon\Carbon::parse($overdue->clock)->format('H:i A') }}
+                                            <p class="mr-2 text-xs font-bold text-lightprimary">
+                                                {{ \Carbon\Carbon::parse($overdue->clock)->format('H:i A') }}
                                             </p>
                                             <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -268,7 +276,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="clock_date" class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
+                <div id="clock_date"
+                    class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
                             <h1 class="m-0.5 font-semibold">
@@ -453,7 +462,7 @@
                                     <label for="time"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
                                         Task</label>
-                                        <input type="time" name="time" id="time"
+                                    <input type="time" name="time" id="time"
                                         class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required="">
                                 </div>
