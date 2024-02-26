@@ -257,10 +257,11 @@
                                                 </p>
                                             </div>
                                         </th>
+                                        <!-- btn edit -->
                                         <td class="flex items-end justify-end px-6 py-9">
-                                            <a href="javascript:void(0)" id="btn-edit-todo" data-modal-target="editTodoModal"
+                                            <a href="javascript:void(0)" id="{{ $todo->id }}" data-modal-target="editTodoModal"
                                             data-modal-toggle="editTodoModal"
-                                                data-id="{{ $todo->id }}" class="font-medium hover:underline">
+                                                data-id="{{ $todo->id }}" class="font-medium editIcon hover:underline">
                                                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -396,7 +397,7 @@
                                     <label for="title"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
                                         Task</label>
-                                    <input type="text" name="title" id="title"
+                                    <input type="text" name="title" id="addtitle"
                                         class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Judul Task" required="">
                                 </div>
@@ -404,7 +405,7 @@
                                     <label for="comment"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
                                         Task</label>
-                                    <textarea name="comment" id="comment" rows="4"
+                                    <textarea name="comment" id="addcomment" rows="4"
                                         class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Komentar Task" required=""></textarea>
                                 </div>
@@ -446,7 +447,7 @@
                                             </svg>
                                         </div>
                                         <input datepicker datepicker-autohide type="text" name="date"
-                                            id="date"
+                                            id="adddate"
                                             class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                             placeholder="Select date" required="">
                                     </div>

@@ -72,6 +72,15 @@ class TodoController extends Controller
         return response()->json(['success' => true, 'message' => 'Todo status updated successfully'], 200);
     }
 
+    public function edit(Request $request)
+    {
+        $id = $request->id;
+        $todo = Todo::findOrFail($id); // Mengambil data todo berdasarkan ID
+
+        // Mengembalikan data todo dalam format JSON untuk digunakan dalam AJAX request
+        return response()->json($todo);
+    }
+
         /**
      * update
      *
@@ -93,18 +102,37 @@ class TodoController extends Controller
         //     return response()->json($validator->errors(), 422);
         // }
 
-        $todo->update([
+        $todoData = [
             'title'     => $request->title,
             'comment'   => $request->comment,
             'clock'     => "07:00",
             'date'      => $request->date,
             'status'    => "todo",
-        ]);
+        ];
+
+        if ($todo->update($todoData)) {
+
+            return response()->json([
+                'status' => 200,
+            ]);
+        }
 
         return response()->json([
-            'success' => true,
-            'message' => 'Data Berhasil Diudapte!',
-            'data'    => $todo  
+            'status' => 500,
         ]);
+    }
+    public function delete(Request $request)
+    {
+        $todo = Todo::find($request->id);
+
+        if (!$todo) {
+            return response()->json(['status' => 404, 'message' => 'Todo not found'], 404);
+        }
+
+        if ($todo->delete()) {
+            return response()->json(['status' => 200, 'message' => 'Todo deleted successfully'], 200);
+        } else {
+            return response()->json(['status' => 500, 'message' => 'Failed to delete todo'], 500);
+        }
     }
 }

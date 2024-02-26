@@ -196,8 +196,8 @@ $(function () {
         });
     });
 
-    // edit todo ajax request
-    $(document).on('click', '.editIcon', function (e) {
+     // edit todo ajax request
+     $(document).on('click', '.editIcon', function (e) {
         e.preventDefault();
         let id = $(this).attr('id');
         let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -221,6 +221,11 @@ $(function () {
 
     // update todo ajax request
     $("#edit_todo_form").submit(function (e) {
+        const editTodoModal = new Modal(document.getElementById('editTodoModal'))
+        function closeeditModal() {
+            editTodoModal.hide()
+            document.querySelector("body > div[modal-backdrop]")?.remove()
+        }
         e.preventDefault();
         const fd = new FormData(this);
         $("#edit_todo_btn").text('Mengubah...');
@@ -234,24 +239,26 @@ $(function () {
             dataType: 'json',
             success: function (response) {
                 if (response.status == 200) {
+                    closeeditModal()
                     Swal.fire(
                         'Sukses!',
                         'Task berhasil diubah!',
                         'success'
-                    )
-                    // fetchAllTodos();
+                    ).then((result) => {
+                        location.reload();
+                      });
                 }
                 $("#edit_todo_btn").text('Submit');
                 $("#edit_todo_form")[0].reset();
-                $("#editTodoModal").modal('hide');
+                // $("#editTodoModal").modal('hide');
             }
         });
     });
 
     // delete todo ajax request
-    $(document).on('click', '.deleteIcon', function (e) {
+    $(document).on('click', '#btn-delete-todo', function (e) {
         e.preventDefault();
-        let id = $(this).attr('id');
+        let id = $(this).data('id');
         let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         Swal.fire({
             title: 'Are you sure?',
@@ -276,7 +283,10 @@ $(function () {
                                 'Sukses!',
                                 'Task berhasil dihapus.',
                                 'success'
-                            )
+                            ).then((result) => {
+                                $(`#todo-${id}`).remove();
+                                location.reload();
+                              });
                             // fetchAllTodos();
                         }
                         else {
