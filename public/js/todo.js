@@ -171,7 +171,7 @@ $(function () {
             success: function (response) {
                 $("#title").val(response.title);
                 $("#comment").val(response.comment);
-                $("#clock").val(response.clock);
+                $("#time").val(response.clock);
                 $("#date").val(response.date);
                 $("#status").val(response.status);
                 $("#todo_id").val(response.id);

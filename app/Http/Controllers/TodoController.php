@@ -10,7 +10,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::latest()->get();
+        $todos = Todo::latest()->where('status', 'todo')->orwhere('status','done')->get();
         $todoCount = Todo::where('status', 'todo')->count();
         $doneCount = Todo::where('status', 'done')->count();
         $overdueCount = Todo::where('status', 'overdue')->count();
