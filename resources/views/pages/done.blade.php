@@ -234,7 +234,7 @@
                                             </p>
                                         </div>
                                         <div class="flex items-center justify-start">
-                                            <p class="mr-2 text-xs font-bold text-lightprimary">{{ $done->clock }} AM
+                                            <p class="mr-2 text-xs font-bold text-lightprimary">{{ \Carbon\Carbon::parse($done->clock)->format('H:i A') }}
                                             </p>
                                             <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
