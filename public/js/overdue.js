@@ -13,7 +13,13 @@ setInterval(function() {
                     title: "Info!",
                     text: "Task berikut telah menjadi overdue: " + titlesString,
                     confirmButtonColor: "#BA181B",
-                    confirmButtonText: 'OK'
+                    confirmButtonText: 'OK',
+                    showCloseButton: true,
+                    willClose: (dismiss) => {
+                        if (!dismiss.isConfirmed) {
+                            checkbox.checked = false;
+                        }
+                    }
                 }).then((result) => {
                 location.reload();
               });
