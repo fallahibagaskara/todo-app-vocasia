@@ -25,13 +25,11 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/todo', [TodoController::class, 'index'])->name('todo.index');
     Route::post('/todo/store', [TodoController::class, 'store'])->name('todo.store');
-    // Route::get('/todo/fetchall', [TodoController::class, 'fetchAll'])->name('todo.fetchAll');
     Route::put('/todo/mark/{id}', [TodoController::class, 'mark']);
     Route::get('/todo/edit', [TodoController::class, 'edit'])->name('todo.edit');
     Route::post('/todo/update', [TodoController::class, 'update'])->name('todo.update');
     Route::delete('/todo/delete', [TodoController::class, 'delete'])->name('todo.delete');
-
-
     Route::get('/done', [DoneController::class, 'index'])->name('done.index');
     Route::get('/overdue', [OverdueController::class, 'index'])->name('overdue.index');
+    Route::post('/overdue/check', [OverdueController::class, 'check'])->name('overdue.check');
 });
