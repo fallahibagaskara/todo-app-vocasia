@@ -31,5 +31,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::delete('/todo/delete', [TodoController::class, 'delete'])->name('todo.delete');
     Route::get('/done', [DoneController::class, 'index'])->name('done.index');
     Route::get('/overdue', [OverdueController::class, 'index'])->name('overdue.index');
+    Route::get('/overdue/edit', [OverdueController::class, 'edit'])->name('overdue.edit');
+    Route::post('/overdue/update', [OverdueController::class, 'update'])->name('overdue.update');
+    Route::delete('/overdue/delete', [OverdueController::class, 'delete'])->name('overdue.delete');
     Route::post('/overdue/check', [OverdueController::class, 'check'])->name('overdue.check');
 });
