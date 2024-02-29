@@ -67,6 +67,12 @@ class OverdueController extends Controller
             'date'      => $request->date,
         ];
 
+        $newDateTime = strtotime($request->date . ' ' . $request->time);
+        $currentDateTime = time();
+        if ($newDateTime > $currentDateTime) {
+            $todoData['status'] = 'todo';
+        }
+
         if ($todo->update($todoData)) {
             return response()->json([
                 'status' => 200,
