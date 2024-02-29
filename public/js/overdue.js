@@ -16,12 +16,12 @@ setInterval(function() {
                     confirmButtonText: 'OK',
                     showCloseButton: true,
                     willClose: (dismiss) => {
-                        if (!dismiss.isConfirmed) {
-                            checkbox.checked = false;
-                        }
                     }
                 }).then((result) => {
-                location.reload();
+                    if (result.isConfirmed) {
+                        location.reload();
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    }
               });
             }
         },

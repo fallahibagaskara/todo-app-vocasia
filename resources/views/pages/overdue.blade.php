@@ -228,7 +228,7 @@
                                         <div class="flex items-center">
                                             <input id="checkbox-table-search-{{ $overdue->id }}" type="checkbox"
                                                 class="w-4 h-4 bg-white border-2 border-gray-400 rounded text-primary focus:ring-primary focus:ring-2 checkbox-todo"
-                                                {{ $overdue->status === 'overdue' ? 'checked' : '' }}>
+                                                {{ $overdue->status === 'overdue' ? 'checked' : '' }} @disabled(true)>
                                             <label for="checkbox-table-search-{{ $overdue->id }}"
                                                 class="sr-only">checkbox</label>
                                         </div>
