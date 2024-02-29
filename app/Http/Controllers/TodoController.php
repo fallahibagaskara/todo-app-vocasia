@@ -97,6 +97,14 @@ class TodoController extends Controller
             'date'      => $request->date,
         ];
 
+        if ($todo->status !== 'done') {
+            $newDateTime = strtotime($request->date . ' ' . $request->time);
+            $currentDateTime = time();
+            if ($newDateTime < $currentDateTime) {
+                $todoData['status'] = 'overdue';
+            }
+        }
+
         if ($todo->update($todoData)) {
             return response()->json([
                 'status' => 200,
