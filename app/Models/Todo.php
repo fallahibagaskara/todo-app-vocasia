@@ -18,4 +18,14 @@ class Todo extends Model
         'date',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function usersTodo()
+    {
+        return $this->belongsToMany(User::class, 'todo');
+    }
 }

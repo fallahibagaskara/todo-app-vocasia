@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('todo', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->string('title');
             $table->longText('comment');
             $table->string('clock');

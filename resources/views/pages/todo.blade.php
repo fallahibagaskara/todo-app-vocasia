@@ -169,9 +169,9 @@
                                 <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
                                     alt="Profile picture">
                                 <div class="ml-4">
-                                    <h2 class="text-lg font-bold text-left text-darkblue">{{ Auth::user()->name }}
+                                    <h2 class="text-lg font-bold text-left font-nunito text-darkblue">{{ Auth::user()->name }}
                                     </h2>
-                                    <p class="text-left text-subheading">Ayo lebih produktif 👋 </p>
+                                    <p class="font-sans text-left text-subheading">Ayo lebih produktif 👋 </p>
                                 </div>
                             </div>
                         </div>
@@ -182,8 +182,8 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/todo-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{ $todoCount }}</span>
-                                        <span class="text-sm font-medium text-white">To Do Task</span>
+                                        <span class="mr-2 text-6xl font-medium text-white font-nunito">{{ $todoCount }}</span>
+                                        <span class="font-sans text-sm font-medium text-white">To Do Task</span>
                                     </div>
                                 </div>
                             </div>
@@ -191,8 +191,8 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/done-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{ $doneCount }}</span>
-                                        <span class="text-sm font-medium text-white">Done Task</span>
+                                        <span class="mr-2 text-6xl font-medium text-white font-nunito">{{ $doneCount }}</span>
+                                        <span class="font-sans text-sm font-medium text-white">Done Task</span>
                                     </div>
                                 </div>
                             </div>
@@ -200,8 +200,8 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{ $overdueCount }}</span>
-                                        <span class="text-sm font-medium text-white">Overdue Task</span>
+                                        <span class="mr-2 text-6xl font-medium text-white font-nunito">{{ $overdueCount }}</span>
+                                        <span class="font-sans text-sm font-medium text-white">Overdue Task</span>
                                     </div>
                                 </div>
                             </div>
@@ -214,14 +214,14 @@
                 <div
                     class="relative flex items-center justify-between col-span-2 mx-10 mt-10 border border-t border-l border-r">
                     <div class="flex m-4">
-                        <h1 class="font-semibold text-darkblue">
+                        <h1 class="font-bold font-nunito text-darkblue">
                             To Do Today
                         </h1>
                     </div>
                     <div class="flex mt-2 mr-2">
                         <button type="button" id="create_todo_btn" data-modal-target="addTodoModal"
                             data-modal-toggle="addTodoModal"
-                            class="inline-flex items-center px-5 py-3 mb-2 text-sm font-semibold text-center bg-red-100 text-primary hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-xl me-2">
+                            class="inline-flex items-center px-5 py-3 mb-2 text-sm font-bold text-center bg-red-100 font-nunito text-primary hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-100 rounded-xl me-2">
                             + Tambah
                         </button>
                     </div>
@@ -243,23 +243,23 @@
                                     </td>
                                     <th class="px-6 py-4 font-medium text-gray-900">
                                         <h5
-                                            class="mb-1 text-sm font-bold tracking-tight text-gray-900 @if ($todo->status === 'done') line-through @endif">
+                                            class="mb-1 text-sm font-nunito font-bold tracking-tight text-gray-900 @if ($todo->status === 'done') line-through @endif">
                                             {{ $todo->title }}</h5>
                                         <div style="word-wrap: break-word; width: 475px">
                                             <p
-                                                class="mb-2 text-xs font-normal text-darkgray @if ($todo->status === 'done') line-through @endif">
+                                                class="mb-2 text-xs font-sans font-normal text-darkgray @if ($todo->status === 'done') line-through @endif">
                                                 {{ $todo->comment }}
                                             </p>
                                         </div>
                                         <div class="flex items-center justify-start">
-                                            <p class="mr-2 text-xs font-bold text-lightprimary">
+                                            <p class="mr-2 font-sans text-xs font-bold text-lightprimary">
                                                 {{ \Carbon\Carbon::parse($todo->clock)->format('H:i A') }}
                                             </p>
                                             <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="2" cy="2" r="2" fill="#737373" />
                                             </svg>
-                                            <p class="ml-2 text-xs font-normal text-subheading">{{ $todo->date }}
+                                            <p class="ml-2 font-sans text-xs font-normal text-subheading">{{ $todo->date }}
                                             </p>
                                         </div>
                                     </th>
@@ -301,7 +301,7 @@
                     class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
-                            <h1 class="m-0.5 font-semibold">
+                            <h1 class="m-0.5 font-nunito text-darkblue font-bold">
                                 Jam dan Tanggal Hari ini
                             </h1>
                         </div>
@@ -310,7 +310,7 @@
                         <iframe
                             src="https://free.timeanddate.com/clock/i9969c3o/n450/szw110/szh110/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee"
                             frameborder="0" width="110" height="110"></iframe>
-                        <div id="custom-clock" style="color: #2B2E4A; font-size: 23px; margin-left:10px"></div>
+                        <div id="custom-clock" class="font-nunito" style="color: #2B2E4A; font-size: 23px; margin-left:10px"></div>
                         <script>
                             function updateClock() {
                                 var now = new Date();
@@ -344,7 +344,7 @@
                         <div class="flex items-center justify-center p-4 border-b rounded-t md:p-5 dark:border-gray-600"
                             data-modal-toggle="addTodoModal">
                             <div class="flex items-center justify-center flex-grow">
-                                <h3 class="ml-8" style="font-size: 20px ; font-weight: 700 ; color: #BA181B ;">
+                                <h3 class="ml-8 font-nunito" style="font-size: 20px ; font-weight: 700 ; color: #BA181B ;">
                                     Task
                                 </h3>
                             </div>
@@ -366,35 +366,35 @@
                             <div class="grid grid-cols-2 gap-4 mb-4">
                                 <div class="col-span-2">
                                     <label for="title"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Judul
                                         Task</label>
                                     <input type="text" name="title" id="addtitle"
-                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray font-sans border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Judul Task" required="">
                                 </div>
                                 <div class="col-span-2">
                                     <label for="comment"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Komentar
                                         Task</label>
                                     <textarea name="comment" id="addcomment" rows="4"
-                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray font-sans border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Komentar Task" required=""></textarea>
                                 </div>
                                 <div class="col-span-2">
                                     <label for="clock"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Jam
                                         Task</label>
                                     <input type="time" name="time" id="addtime"
-                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray font-sans border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required="">
                                 </div>
                                 <div class="col-span-2">
                                     <label for="date"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Tanggal
                                         Task</label>
                                     <div class="relative max-w-sm">
                                         <div
-                                            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                                            class="absolute inset-y-0 flex items-center font-sans pointer-events-none start-0 ps-3">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="0 0 20 20">
@@ -404,14 +404,14 @@
                                         </div>
                                         <input datepicker datepicker-autohide type="text" name="date"
                                             id="adddate"
-                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
+                                            class="bg-lightgray  font-sans border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                             placeholder="Select date" required="">
                                     </div>
                                 </div>
                             </div>
                             <div class="flex justify-center col-span-2">
                                 <button type="submit" id="add_todo_btn"
-                                    class="text-white w-1/2 items-center bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
+                                    class="text-white w-1/2 font-sans items-center bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
                                     Tambahkan
                                 </button>
                             </div>
@@ -430,7 +430,7 @@
                         <div class="flex items-center justify-center p-4 border-b rounded-t md:p-5 dark:border-gray-600"
                             data-modal-toggle="editTodoModal">
                             <div class="flex items-center justify-center flex-grow">
-                                <h3 class="ml-8" style="font-size: 20px ; font-weight: 700 ; color: #BA181B ;">
+                                <h3 class="ml-8 font-nunito" style="font-size: 20px ; font-weight: 700 ; color: #BA181B ;">
                                     Edit Task
                                 </h3>
                             </div>
@@ -453,35 +453,35 @@
                             <div class="grid grid-cols-2 gap-4 mb-4">
                                 <div class="col-span-2">
                                     <label for="title"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Judul
                                         Task</label>
                                     <input type="text" name="title" id="title"
-                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray border border-gray-300 font-sans text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Judul Task" required="">
                                 </div>
                                 <div class="col-span-2">
                                     <label for="comment"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Komentar
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Komentar
                                         Task</label>
                                     <textarea name="comment" id="comment" rows="4"
-                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray border font-sans border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         placeholder="Komentar Task" required=""></textarea>
                                 </div>
                                 <div class="col-span-2">
                                     <label for="clock"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Jam
                                         Task</label>
                                     <input type="time" name="time" id="time"
-                                        class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                        class="bg-lightgray border font-sans border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                         required="">
                                 </div>
                                 <div class="col-span-2">
                                     <label for="date"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                                        class="block mb-2 text-sm font-medium text-gray-900 font-nunito dark:text-white">Tanggal
                                         Task</label>
                                     <div class="relative max-w-sm">
                                         <div
-                                            class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                                            class="absolute inset-y-0 flex items-center font-sans pointer-events-none start-0 ps-3">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="0 0 20 20">
@@ -491,14 +491,14 @@
                                         </div>
                                         <input datepicker datepicker-autohide type="text" name="date"
                                             id="date"
-                                            class="bg-lightgray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
+                                            class="bg-lightgray border font-sans border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lightprimary focus:border-lightprimary block w-full ps-10 p-2.5  dark:bg-darkgray dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lightprimary dark:focus:border-lightprimary"
                                             placeholder="Select date">
                                     </div>
                                 </div>
                             </div>
                             <div class="flex justify-center col-span-2">
                                 <button type="submit" id="edit_todo_btn"
-                                    class="text-white w-1/2 items-center bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
+                                    class="text-white w-1/2 items-center font-sans bg-primary hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-primary dark:focus:ring-red-800">
                                     Submit
                                 </button>
                             </div>

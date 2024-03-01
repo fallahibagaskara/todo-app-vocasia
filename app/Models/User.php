@@ -58,4 +58,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function Todo()
+    {
+        return $this->belongsToMany(Todo::class, 'todo');
+    }
+
+    public function hasTodo(Todo $todo)
+    {
+        return $this->Todo->contains($todo);
+    }
 }

@@ -169,9 +169,9 @@
                                 <img class="w-16 h-16 mx-auto rounded-full" src="https://picsum.photos/200"
                                     alt="Profile picture">
                                 <div class="ml-4">
-                                    <h2 class="text-lg font-bold text-left text-darkblue">{{ Auth::user()->name }}
+                                    <h2 class="text-lg font-bold text-left font-nunito text-darkblue">{{ Auth::user()->name }}
                                     </h2>
-                                    <p class="text-left text-subheading">Ayo lebih produktif 👋 </p>
+                                    <p class="font-sans text-left text-subheading">Ayo lebih produktif 👋 </p>
                                 </div>
                             </div>
                         </div>
@@ -182,8 +182,8 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/todo-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{ $todoCount }}</span>
-                                        <span class="text-sm font-medium text-white">To Do Task</span>
+                                        <span class="mr-2 text-6xl font-medium text-white font-nunito">{{ $todoCount }}</span>
+                                        <span class="font-sans text-sm font-medium text-white">To Do Task</span>
                                     </div>
                                 </div>
                             </div>
@@ -191,8 +191,8 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/done-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{ $doneCount }}</span>
-                                        <span class="text-sm font-medium text-white">Done Task</span>
+                                        <span class="mr-2 text-6xl font-medium text-white font-nunito">{{ $doneCount }}</span>
+                                        <span class="font-sans text-sm font-medium text-white">Done Task</span>
                                     </div>
                                 </div>
                             </div>
@@ -200,8 +200,8 @@
                                 <div class="h-20 bg-center bg-cover rounded-md w-36"
                                     style="background-image: url('{{ asset('images/overdue-bg.png') }}')">
                                     <div class="flex items-center justify-center h-full p-6 w-36">
-                                        <span class="mr-2 text-6xl font-medium text-white">{{ $overdueCount }}</span>
-                                        <span class="text-sm font-medium text-white">Overdue Task</span>
+                                        <span class="mr-2 text-6xl font-medium text-white font-nunito">{{ $overdueCount }}</span>
+                                        <span class="font-sans text-sm font-medium text-white">Overdue Task</span>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +214,7 @@
                 <div
                     class="relative flex items-center justify-between col-span-2 mx-10 mt-10 border border-t border-l border-r">
                     <div class="flex m-4">
-                        <h1 class="font-semibold text-darkblue">
+                        <h1 class="font-bold font-nunito text-darkblue">
                             Done
                         </h1>
                     </div>
@@ -236,23 +236,23 @@
                                     </td>
                                     <th class="px-6 py-4 font-medium text-gray-900">
                                         <h5
-                                            class="mb-1 text-sm font-bold tracking-tight text-gray-900 @if ($done->status === 'done') line-through @endif">
+                                            class="mb-1 text-sm font-bold font-nunito tracking-tight text-gray-900 @if ($done->status === 'done') line-through @endif">
                                             {{ $done->title }}</h5>
                                         <div style="word-wrap: break-word; width: 550px">
                                             <p
-                                                class="mb-2 text-xs font-normal text-darkgray @if ($done->status === 'done') line-through @endif">
+                                                class="mb-2 font-sans text-xs font-normal text-darkgray @if ($done->status === 'done') line-through @endif">
                                                 {{ $done->comment }}
                                             </p>
                                         </div>
                                         <div class="flex items-center justify-start">
-                                            <p class="mr-2 text-xs font-bold text-lightprimary">
+                                            <p class="mr-2 font-sans text-xs font-bold text-lightprimary">
                                                 {{ \Carbon\Carbon::parse($done->clock)->format('H:i A') }}
                                             </p>
                                             <svg width="4" height="4" viewBox="0 0 4 4" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="2" cy="2" r="2" fill="#737373" />
                                             </svg>
-                                            <p class="ml-2 text-xs font-normal text-subheading">{{ $done->date }}
+                                            <p class="ml-2 font-sans text-xs font-normal text-subheading">{{ $done->date }}
                                             </p>
                                         </div>
                                     </th>
@@ -266,7 +266,7 @@
                     class="relative col-span-1 pb-8 mb-6 mr-8 -mt-5 overflow-x-auto border -top-10 h-max">
                     <div class="flex items-center justify-between border-b">
                         <div class="flex m-4">
-                            <h1 class="m-0.5 font-semibold">
+                            <h1 class="m-0.5 font-bold text-darkblue font-nunito">
                                 Jam dan Tanggal Hari ini
                             </h1>
                         </div>
@@ -275,7 +275,7 @@
                         <iframe
                             src="https://free.timeanddate.com/clock/i9969c3o/n450/szw110/szh110/hbw0/hfc000/cf100/hgr0/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd/hsceee"
                             frameborder="0" width="110" height="110"></iframe>
-                        <div id="custom-clock" style="color: #2B2E4A; font-size: 23px; margin-left:10px"></div>
+                        <div id="custom-clock" class="font-nunito" style="color: #2B2E4A; font-size: 23px; margin-left:10px"></div>
 
                         <script>
                             function updateClock() {
