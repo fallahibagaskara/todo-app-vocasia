@@ -59,13 +59,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function Todo()
+    public function todo()
     {
-        return $this->belongsToMany(Todo::class, 'todo');
-    }
-
-    public function hasTodo(Todo $todo)
-    {
-        return $this->Todo->contains($todo);
+        return $this->hasMany(Todo::class);
     }
 }

@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::latest()->where('status', 'todo')->orwhere('status','done')->get();
+        $user = Auth::user();
+        $todos = Todo::latest()->where('user_id', $user->id)->where(function ($query) {
+            $query->where('status', 'todo')
+                ->orWhere('status', 'done');
+        })->get();
         $todoCount = Todo::where('status', 'todo')->count();
         $doneCount = Todo::where('status', 'done')->count();
         $overdueCount = Todo::where('status', 'overdue')->count();
@@ -27,6 +32,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $todoData = [
+            'user_id' => Auth::id(),
             'title'     => $request->title,
             'comment'   => $request->comment,
             'clock'     => $request->time,

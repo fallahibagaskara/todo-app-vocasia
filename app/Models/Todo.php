@@ -12,6 +12,7 @@ class Todo extends Model
     protected $table = "todo";
 
     protected $fillable = [
+        'user_id',
         'title',
         'comment',
         'clock',
@@ -19,13 +20,8 @@ class Todo extends Model
         'status',
     ];
 
-    public function user()
+    public function uploader()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function usersTodo()
-    {
-        return $this->belongsToMany(User::class, 'todo');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

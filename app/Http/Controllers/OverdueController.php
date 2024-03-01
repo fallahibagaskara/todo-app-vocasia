@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Models\Overdue;
+use Illuminate\Support\Facades\Auth;
 
 class OverdueController extends Controller
 {
     public function index()
     {
-        $overdues = Todo::where('status', 'overdue')->get();
+        $user = Auth::user();
+        $overdues = Todo::where('user_id', $user->id)->where('status', 'overdue')->get();
         $todoCount = Todo::where('status', 'todo')->count();
         $doneCount = Todo::where('status', 'done')->count();
         $overdueCount = Todo::where('status', 'overdue')->count();
@@ -19,17 +21,17 @@ class OverdueController extends Controller
 
     public function check()
     {
-        $overdueTasks = Todo::where('status', 'todo')
-                            ->where(function ($query) {
+        $user = Auth::user();
+        $overdueTasks = Todo::where('user_id', $user->id)->where('status', 'todo')->where(function ($query) {
                                 $query->where('date', '<', now()->format('m/d/Y'))
                                     ->orWhere(function ($query) {
                                         $query->where('date', '=', now()->format('m/d/Y'))
                                             ->where('clock', '<', now()->format('H:i'));
                                     });
-                            })
-                            ->get();
+                            })->get();
 
         $updatedTasksCount = 0;
+        $updatedTaskTitles = [];
 
         foreach ($overdueTasks as $task) {
             $task->status = 'overdue';
